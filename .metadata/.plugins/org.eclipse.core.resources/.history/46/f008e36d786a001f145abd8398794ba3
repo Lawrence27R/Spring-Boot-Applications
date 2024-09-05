@@ -1,0 +1,10 @@
+spring.application.name=16-BankMVC-App
+spring.datasource.url=jdbc:mysql://localhost:3306/bankmvcdb
+spring.datasource.username=root
+spring.datasource.password=root
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+app-jwt-expiration-milliseconds=604800000
+app.jwt-secret = U46Cp45x9yp8I158LyyfVWl76w6pIRPtD0WWycrdoeE=

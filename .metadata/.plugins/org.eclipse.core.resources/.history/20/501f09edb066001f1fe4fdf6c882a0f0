@@ -1,0 +1,5 @@
+package com.aurionpro.jwt.exception;
+
+public class UserApiException {
+
+}

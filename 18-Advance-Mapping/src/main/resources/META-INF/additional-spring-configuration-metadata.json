@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "logging.spring.log.append",
+  "type": "java.lang.String",
+  "description": "A description for 'logging.spring.log.append'"
+}]}

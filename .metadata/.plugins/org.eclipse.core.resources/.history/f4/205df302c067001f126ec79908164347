@@ -1,0 +1,117 @@
+package com.aurionpro.bankapp.service;
+
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.aurionpro.bankapp.dto.TransactionDto;
+import com.aurionpro.bankapp.entity.CustomerAccount;
+import com.aurionpro.bankapp.entity.Transaction;
+import com.aurionpro.bankapp.entity.TypeOfTransaction;
+import com.aurionpro.bankapp.repository.CustomerAccountRepository;
+import com.aurionpro.bankapp.repository.TransactionRepository;
+
+@Service
+public class TransactionServiceImpl implements TransactionService {
+
+    @Autowired
+    private CustomerAccountRepository customerAccountRepository;
+
+    @Autowired
+    private TransactionRepository transactionRepository;
+
+    @Override
+    public void deposit(long customerAccountNum, double amount) {
+        CustomerAccount account = getAccount(customerAccountNum);
+        account.setCustomerBalance(account.getCustomerBalance() + amount);
+        customerAccountRepository.save(account);
+
+        createTransaction(account, customerAccountNum, customerAccountNum, amount, TypeOfTransaction.CREDIT);
+    }
+
+    @Override
+    public void withdraw(long customerAccountNum, double amount) {
+        CustomerAccount account = getAccount(customerAccountNum);
+        if (account.getCustomerBalance() - amount >= 1000) {
+            account.setCustomerBalance(account.getCustomerBalance() - amount);
+            customerAccountRepository.save(account);
+
+            createTransaction(account, customerAccountNum, customerAccountNum, amount, TypeOfTransaction.DEBIT);
+        } else {
+            throw new IllegalArgumentException("Insufficient balance");
+        }
+    }
+
+    @Override
+    public void transfer(long fromAccountNum, long toAccountNum, double amount) {
+        CustomerAccount senderAccount = getAccount(fromAccountNum);
+        CustomerAccount receiverAccount = getAccount(toAccountNum);
+
+        if (senderAccount.getCustomerBalance() - amount < 1000) {
+            throw new IllegalArgumentException("Insufficient balance");
+        }
+        senderAccount.setCustomerBalance(senderAccount.getCustomerBalance() - amount);
+        customerAccountRepository.save(senderAccount);
+        createTransaction(senderAccount, fromAccountNum, toAccountNum, amount, TypeOfTransaction.DEBIT);
+        
+        receiverAccount.setCustomerBalance(receiverAccount.getCustomerBalance() + amount);
+        customerAccountRepository.save(receiverAccount);
+        createTransaction(receiverAccount, fromAccountNum, toAccountNum, amount, TypeOfTransaction.CREDIT);
+    }
+
+
+    private CustomerAccount getAccount(long accountNumber) {
+        return customerAccountRepository.findByAccountNumber(accountNumber)
+                .orElseThrow(() -> new IllegalArgumentException("Account not found"));
+    }
+
+    private void createTransaction(CustomerAccount account, long senderAccount, long receiverAccount, double amount, TypeOfTransaction typeOfTransaction) {
+        Transaction transaction = new Transaction();
+        transaction.setAccount(account);
+        transaction.setSenderAccount(senderAccount);
+        transaction.setReceiverAccount(receiverAccount);
+        transaction.setAmount(amount);
+        transaction.setTypeOfTransaction(typeOfTransaction);
+        transaction.setDate(new Date());
+        transactionRepository.save(transaction);
+    }
+    
+    @Override
+    public List<TransactionDto> getFilteredTransactions(Long accountNumber, Date startDate, Date endDate, String typeOfTransaction) {
+        List<Transaction> transactions = transactionRepository.findByAccount_AccountNumber(accountNumber);
+
+        return transactions.stream()
+                .filter(transaction -> (startDate == null || !transaction.getDate().before(startDate)) &&
+                                       (endDate == null || !transaction.getDate().after(endDate)) &&
+                                       (typeOfTransaction == null || transaction.getTypeOfTransaction().toString().equals(typeOfTransaction)))
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<TransactionDto> getAllTransactions(Long accountNumber, Date startDate, Date endDate, String typeOfTransaction) {
+        List<Transaction> transactions = transactionRepository.findAll();
+
+        return transactions.stream()
+                .filter(transaction -> (accountNumber == null || transaction.getAccount().getAccountNumber().equals(accountNumber)) &&
+                                       (startDate == null || !transaction.getDate().before(startDate)) &&
+                                       (endDate == null || !transaction.getDate().after(endDate)) &&
+                                       (typeOfTransaction == null || transaction.getTypeOfTransaction().toString().equals(typeOfTransaction)))
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
+
+    private TransactionDto convertToDto(Transaction transaction) {
+        return new TransactionDto(
+                transaction.getTransactionId(),
+                transaction.getSenderAccount(),
+                transaction.getReceiverAccount(),
+                transaction.getTypeOfTransaction(),
+                transaction.getAmount(),
+                transaction.getDate()
+        );
+    }
+}

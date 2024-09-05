@@ -1,0 +1,81 @@
+package com.aurionpro.bankapp.controllers;
+
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.aurionpro.bankapp.dto.TransactionDto;
+import com.aurionpro.bankapp.service.CustomerService;
+import com.aurionpro.bankapp.service.TransactionService;
+
+@RestController
+@RequestMapping("/bankApp")
+public class TransactionController {
+
+    @Autowired
+    private TransactionService transactionService;
+    
+	@Autowired
+	private CustomerService customerService;
+
+    @PostMapping("/deposit")
+    public ResponseEntity<String> deposit(
+            @RequestParam long customerAccountNum,
+            @RequestParam double amount
+    ) {
+        try {
+            transactionService.deposit(customerAccountNum, amount);
+            return new ResponseEntity<>("Deposit successful", HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Deposit failed: " + e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PostMapping("/withdraw")
+    public ResponseEntity<String> withdraw(
+            @RequestParam long customerAccountNum,
+            @RequestParam double amount
+    ) {
+        try {
+            transactionService.withdraw(customerAccountNum, amount);
+            return new ResponseEntity<>("Withdrawal successful", HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Withdrawal failed: " + e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PostMapping("/transfer")
+    public ResponseEntity<String> transfer(
+            @RequestParam long fromAccountNum,
+            @RequestParam long toAccountNum,
+            @RequestParam double amount
+    ) {
+        try {
+            transactionService.transfer(fromAccountNum, toAccountNum, amount);
+            return new ResponseEntity<>("Transfer successful", HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Transfer failed: " + e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+    
+    @GetMapping("/viewPassbook")
+    public ResponseEntity<List<TransactionDto>> viewPassbook(
+            @RequestParam(required = true) Long customerAccountNum,
+            @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate,
+            @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate,
+            @RequestParam(required = false) String typeOfTrans) {
+        
+        List<TransactionDto> transactions = transactionService.getFilteredTransactions(customerAccountNum, startDate, endDate, typeOfTrans);
+        return new ResponseEntity<>(transactions, HttpStatus.OK);
+    }
+
+}

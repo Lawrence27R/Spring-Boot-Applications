@@ -1,0 +1,35 @@
+package com.aurionpro.bankapp.mapper;
+
+import com.aurionpro.bankapp.dto.CustomerDto;
+import com.aurionpro.bankapp.entity.User;
+
+public class CustomerMapper {
+
+    public static User toEntity(CustomerDto customerDto) {
+        if (customerDto == null) {
+            return null;
+        }
+
+        User customer = new User();
+        customer.setFirstname(customerDto.getFirstname());
+        customer.setLastname(customerDto.getLastname());
+        customer.setEmailId(customerDto.getEmailId());
+        customer.setPassword(customerDto.getCustomerPassword());
+        
+        return customer;
+    }
+
+    public static CustomerDto toDto(User customer) {
+        if (customer == null) {
+            return null;
+        }
+
+        CustomerDto customerDto = new CustomerDto();
+        customerDto.setFirstname(customer.getFirstname());
+        customerDto.setLastname(customer.getLastname());
+        customerDto.setEmailId(customer.getEmailId());
+        customerDto.setCustomerPassword(customer.getCustomerPassword());
+        
+        return customerDto;
+    }
+}

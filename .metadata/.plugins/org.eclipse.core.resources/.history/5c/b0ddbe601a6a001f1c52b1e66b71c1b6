@@ -1,0 +1,27 @@
+package com.aurionpro.bankapp.repository;
+
+import java.util.Optional;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.aurionpro.bankapp.entity.User;
+
+public interface UserRepository extends JpaRepository<User, Integer> {
+	Optional<User> findByEmailIdAndPassword(String emailId, String password);
+
+	Optional<User> findByEmailId(String emailId);
+
+	boolean existsByEmailId(String emailId);
+
+	Optional<User> findByUserId(Integer userId);
+
+	Page<User> findByFirstnameIgnoreCase(String firstname, Pageable pageable);
+
+	Page<User> findByLastnameIgnoreCase(String lastname, Pageable pageable);
+
+	Page<User> findByFirstnameIgnoreCaseAndLastnameIgnoreCase(String firstname, String lastname, Pageable pageable);
+
+	Page<User> findAll(Pageable pageable);
+}

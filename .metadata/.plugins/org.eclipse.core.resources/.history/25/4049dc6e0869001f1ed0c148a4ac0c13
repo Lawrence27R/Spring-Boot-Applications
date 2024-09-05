@@ -1,0 +1,12 @@
+package com.aurionpro.jwt.service;
+
+import java.util.List;
+
+import com.aurionpro.jwt.entity.Customer;
+
+public interface CustomerService {
+
+	List<Customer> getAllCustomers();
+	
+	Customer getCustomerById(int customerId);
+}

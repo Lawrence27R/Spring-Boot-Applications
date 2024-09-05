@@ -1,0 +1,21 @@
+package com.aurionpro.bankapp.repository;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.aurionpro.bankapp.entity.User;
+
+public interface UserRepository extends JpaRepository<User, Integer> {
+    Optional<User> findByEmailIdAndPassword(String emailId, String password);
+    
+    Optional<User> findByEmailId(String emailId);
+    
+    List<User> findByFirstnameIgnoreCase(String firstname);
+    List<User> findByLastnameIgnoreCase(String lastname);
+    Optional<User> findByUserId(Integer userId);
+	
+	boolean existsByEmailId(String emailId);	
+}
+

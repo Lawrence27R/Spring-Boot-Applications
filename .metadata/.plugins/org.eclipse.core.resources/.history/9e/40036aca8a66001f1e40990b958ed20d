@@ -1,0 +1,5 @@
+package com.aurionpro.main.captcha;
+
+public class CaptchaGenerator {
+
+}

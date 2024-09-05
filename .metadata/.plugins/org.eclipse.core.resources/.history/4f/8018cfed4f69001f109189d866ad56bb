@@ -1,0 +1,22 @@
+package com.aurionpro.bankapp.service;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.aurionpro.bankapp.entity.User;
+import com.aurionpro.bankapp.repository.UserRepository;
+
+@Service
+public class LoginServiceImpl implements LoginService {
+
+    @Autowired
+    private UserRepository customerRepository;
+
+    @Override
+    public boolean isCustomerValid(String emailId, String password) {
+        Optional<User> customer = customerRepository.findByEmailIdAndCustomerPassword(emailId, password);
+        return customer.isPresent();
+    }
+}

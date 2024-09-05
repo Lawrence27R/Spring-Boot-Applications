@@ -1,0 +1,27 @@
+package com.aurionpro.bankapp.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import com.aurionpro.bankapp.dto.CustomerAccountInfoDto;
+import com.aurionpro.bankapp.dto.CustomerDto;
+import com.aurionpro.bankapp.dto.EditCustomerProfileDto;
+import com.aurionpro.bankapp.entity.CustomerAccount;
+import com.aurionpro.bankapp.entity.User;
+
+public interface AdminService {
+	Optional<User> findCustomerById(int customerId);
+
+	boolean addCustomer(CustomerDto customerDto);
+
+	CustomerAccount createAccountForCustomer(User customer);
+	
+	List<CustomerAccountInfoDto> getAllCustomerAccounts(String firstname, String lastname, Long accountNumber);
+	
+    List<User> getAllCustomers();
+
+    List<User> getFilteredCustomers(String firstname, String lastname, Integer customerId);
+    
+	boolean updateCustomerProfile(int customerId, EditCustomerProfileDto request);
+	
+}

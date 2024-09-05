@@ -1,0 +1,51 @@
+package com.aurionpro.bankapp.controllers;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.aurionpro.bankapp.dto.CustomerAccountInfoDto;
+import com.aurionpro.bankapp.entity.Customer;
+import com.aurionpro.bankapp.entity.CustomerAccount;
+import com.aurionpro.bankapp.service.AddCustomerBankAccount;
+
+@RestController
+@RequestMapping("/bankApp/admin")
+public class AddCustomerBankAccountController {
+
+    @Autowired
+    private AddCustomerBankAccount addCustomerBankAccount;
+
+    @GetMapping("/findCustomer")
+    public ResponseEntity<?> findCustomerById(@RequestParam int customerId) {
+        Optional<Customer> customer = addCustomerBankAccount.findCustomerById(customerId);
+        if (!customer.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Customer not found");
+        }
+        return ResponseEntity.ok(customer.get());
+    }
+
+    @PostMapping("/createAccount")
+    public ResponseEntity<?> createAccountForCustomer(@RequestParam int customerId) {
+        Optional<Customer> customer = addCustomerBankAccount.findCustomerById(customerId);
+        if (!customer.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Customer not found");
+        }
+        CustomerAccount account = addCustomerBankAccount.createAccountForCustomer(customer.get());
+        return ResponseEntity.ok(account);
+    }
+    
+    @GetMapping("/allCustomers")
+    public ResponseEntity<List<CustomerAccountInfoDto>> getAllCustomerAccounts() {
+        List<CustomerAccountInfoDto> customers = addCustomerBankAccount.getAllCustomerAccounts();
+        return ResponseEntity.ok(customers);
+    }
+}

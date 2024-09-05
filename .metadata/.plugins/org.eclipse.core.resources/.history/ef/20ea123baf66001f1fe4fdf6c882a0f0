@@ -1,0 +1,13 @@
+package com.aurionpro.jwt.dto;
+
+import java.util.List;
+
+import com.aurionpro.jwt.entity.Role;
+
+public class RegistrationDto {
+
+	private int userId
+	private String username;
+	private String password;
+	private List<Role> role;
+}

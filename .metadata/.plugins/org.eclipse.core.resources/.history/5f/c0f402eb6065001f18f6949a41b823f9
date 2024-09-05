@@ -1,0 +1,29 @@
+@Entity
+@Table(name = "transactions")
+@Data
+@NoArgsConstructor
+public class Transaction {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int transactionId;
+
+    @ManyToOne
+    @JoinColumn(name = "sender_account_number", referencedColumnName = "accountNumber", nullable = false)
+    private CustomerAccount senderAccount;
+
+    @ManyToOne
+    @JoinColumn(name = "receiver_account_number", referencedColumnName = "accountNumber", nullable = false)
+    private CustomerAccount receiverAccount;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private TypeOfTransaction typeOfTransaction;
+
+    @Column(nullable = false)
+    private double amount;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false, updatable = false)
+    private Date date;
+}

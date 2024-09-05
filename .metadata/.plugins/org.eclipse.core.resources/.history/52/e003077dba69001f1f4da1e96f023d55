@@ -1,0 +1,74 @@
+package com.aurionpro.bankapp.service;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.aurionpro.bankapp.dto.TransactionDto;
+import com.aurionpro.bankapp.entity.Transaction;
+import com.aurionpro.bankapp.repository.TransactionRepository;
+
+@Service
+public class TransactionServiceImpl implements TransactionService {
+
+    @Autowired
+    private TransactionRepository transactionRepository;
+    
+    @Override
+    public List<TransactionDto> getFilteredTransactions(Long accountNumber, Date startDate, Date endDate, String typeOfTransaction) {
+        List<Transaction> transactions = transactionRepository.findByAccount_AccountNumber(accountNumber);
+        return filterTransactions(transactions, accountNumber, startDate, endDate, typeOfTransaction);
+    }
+
+
+    @Override
+    public List<TransactionDto> getAllTransactions(Long accountNumber, Date startDate, Date endDate, String typeOfTransaction) {
+        List<Transaction> transactions = transactionRepository.findAll();
+        return filterTransactions(transactions, accountNumber, startDate, endDate, typeOfTransaction);
+    }
+    
+    private List<TransactionDto> filterTransactions(List<Transaction> transactions, Long accountNumber, Date startDate, Date endDate, String typeOfTransaction) {
+        List<TransactionDto> filteredTransactions = new ArrayList<>();
+
+        for (Transaction transaction : transactions) {
+            boolean matchFound = true;
+
+            if (accountNumber != null && !transaction.getAccount().getAccountNumber().equals(accountNumber)) {
+                matchFound = false;
+            }
+
+            if (startDate != null && transaction.getDate().before(startDate)) {
+                matchFound = false;
+            }
+
+            if (endDate != null && transaction.getDate().after(endDate)) {
+                matchFound = false;
+            }
+
+            if (typeOfTransaction != null && !transaction.getTypeOfTransaction().toString().equals(typeOfTransaction)) {
+                matchFound = false;
+            }
+
+            if (matchFound) {
+                filteredTransactions.add(convertToDto(transaction));
+            }
+        }
+
+        return filteredTransactions;
+    }
+
+
+    private TransactionDto convertToDto(Transaction transaction) {
+        return new TransactionDto(
+                transaction.getTransactionId(),
+                transaction.getSenderAccount(),
+                transaction.getReceiverAccount(),
+                transaction.getTypeOfTransaction(),
+                transaction.getAmount(),
+                transaction.getDate()
+        );
+    }
+}

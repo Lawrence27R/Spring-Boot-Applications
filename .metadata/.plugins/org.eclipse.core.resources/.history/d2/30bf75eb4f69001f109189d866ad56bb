@@ -1,0 +1,6 @@
+package com.aurionpro.bankapp.service;
+
+
+public interface LoginService {
+    boolean isCustomerValid(String emailId, String password);
+}

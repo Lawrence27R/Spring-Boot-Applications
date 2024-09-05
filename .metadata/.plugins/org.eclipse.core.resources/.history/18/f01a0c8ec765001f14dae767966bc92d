@@ -1,0 +1,13 @@
+package com.aurionpro.bankapp.service;
+
+import java.util.List;
+
+import com.aurionpro.bankapp.entity.Customer;
+import com.aurionpro.bankapp.entity.CustomerAccount;
+
+public interface GetAllCustomerService {
+
+    List<CustomerAccount> getAllCustomers();
+
+    List<Customer> getFilteredCustomers(String firstname, String lastname, int customerId);
+}

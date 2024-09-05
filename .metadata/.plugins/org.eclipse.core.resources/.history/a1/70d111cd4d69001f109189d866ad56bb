@@ -1,0 +1,5 @@
+package com.aurionpro.bankapp.service;
+
+public interface CustomerService {
+
+}

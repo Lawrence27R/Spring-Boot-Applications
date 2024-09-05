@@ -1,0 +1,51 @@
+package com.aurionpro.bankapp.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.aurionpro.bankapp.entity.Customer;
+import com.aurionpro.bankapp.repository.CustomerRepository;
+
+@Service
+public class GetAllCustomerServiceImpl implements GetAllCustomerService {
+
+    @Autowired
+    private CustomerRepository customerRepository;
+
+    @Override
+    public List<Customer> getAllCustomers() {
+        return customerRepository.findAll();
+    }
+
+    @Override
+    public List<Customer> getFilteredCustomers(String firstname, String lastname, Integer customerId) {
+        List<Customer> customers = customerRepository.findAll();
+        List<Customer> filteredCustomers = new ArrayList<>();
+
+        for (Customer customer : customers) {
+            boolean matchfound = true;
+
+            if (firstname != null && !customer.getFirstname().equalsIgnoreCase(firstname)) {
+            	matchfound = false;
+            }
+
+            if (lastname != null && !customer.getLastname().equalsIgnoreCase(lastname)) {
+            	matchfound = false;
+            }
+
+            if (customerId != null && customer.getCustomerId() != customerId) {
+            	matchfound = false;
+            }
+
+            if (matchfound) {
+                filteredCustomers.add(customer);
+            }
+        }
+
+        return filteredCustomers;
+    }
+
+}

@@ -1,0 +1,5 @@
+package com.aurionpro.jwt.dto;
+
+public class LoginDto {
+
+}

@@ -1,0 +1,10 @@
+package com.aurionpro.bankapp.service;
+
+public interface TransactionService {
+
+    void deposit(long customerAccountNum, double amount);
+
+    void withdraw(long customerAccountNum, double amount);
+
+    void transfer(long fromAccountNum, long toAccountNum, double amount);
+}

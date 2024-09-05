@@ -1,0 +1,16 @@
+package com.aurionpro.bankapp.service;
+
+import java.util.Date;
+
+import org.springframework.data.domain.jaxb.SpringDataJaxb.PageRequestDto;
+
+import com.aurionpro.bankapp.dto.TransactionDto;
+
+public interface TransactionService {
+
+	PageRequestDto<TransactionDto> getFilteredTransactions(Long accountNumber, Date startDate, Date endDate,
+			String typeOfTransaction, int pageNumber, int pageSize);
+
+	PageRequestDto<TransactionDto> getAllTransactions(Long accountNumber, Date startDate, Date endDate, String typeOfTransaction,
+			int pageNumber, int pageSize);
+}

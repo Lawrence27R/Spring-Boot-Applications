@@ -1,0 +1,31 @@
+package com.aurionpro.jwt.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.aurionpro.jwt.entity.Customer;
+import com.aurionpro.jwt.service.CustomerService;
+
+@RestController
+@RequestMapping("/api")
+public class CustomerController {
+	
+	@Autowired
+	private CustomerService customerService;
+	
+	@GetMapping("/allcustomer")
+	public List<Customer> getAllCustomer() {
+		return customerService.getAllCustomers();
+	}
+	
+	@GetMapping("/customer")
+	public Optional<Customer> findByCustomerId(@RequestParam int customerId) {
+		return customerService.getCustomerById(customerId);
+	}
+}

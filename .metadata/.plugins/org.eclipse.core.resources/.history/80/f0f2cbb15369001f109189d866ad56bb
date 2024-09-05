@@ -1,0 +1,137 @@
+package com.aurionpro.bankapp.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.aurionpro.bankapp.dto.CustomerAccountInfoDto;
+import com.aurionpro.bankapp.dto.CustomerDto;
+import com.aurionpro.bankapp.entity.CustomerAccount;
+import com.aurionpro.bankapp.entity.User;
+import com.aurionpro.bankapp.mapper.CustomerMapper;
+import com.aurionpro.bankapp.repository.CustomerAccountRepository;
+import com.aurionpro.bankapp.repository.UserRepository;
+
+@Service
+public class AdminServiceImpl implements AdminService {
+    
+    @Autowired
+    private UserRepository customerRepository;
+    
+    @Autowired
+    private CustomerAccountRepository customerAccountRepository;
+
+    @Override
+    public boolean addCustomer(CustomerDto customerDto) {
+    	User customer = CustomerMapper.toEntity(customerDto);
+        
+        if (customerRepository.findByEmailId(customer.getEmailId()).isPresent()) {
+            return false;
+        }
+        
+        customerRepository.save(customer);
+        return true;
+    }
+    
+	@Override
+	public Optional<User> findCustomerById(int customerId) {
+		return customerRepository.findById(customerId);
+	}
+
+    @Override
+    public CustomerAccount createAccountForCustomer(User customer) {
+        CustomerAccount account = new CustomerAccount();
+        
+        long accountNumber;
+        
+        do {
+            accountNumber = generateRandomAccountNumber();
+        } while (customerAccountRepository.existsByAccountNumber(accountNumber));
+        account.setAccountNumber(accountNumber);
+
+        account.setCustomerBalance(5000);
+        account.setUser(customer);
+
+        return customerAccountRepository.save(account);
+    }
+    
+    private long generateRandomAccountNumber() {
+        // Prefix for account number
+        final long PREFIX = 1050_0000;
+        long SUFFIX = (long) (Math.random() * 10000);
+        return PREFIX + SUFFIX;
+    }
+    
+    @Override
+    public List<CustomerAccountInfoDto> getAllCustomerAccounts(String firstname, String lastname, Long accountNumber) {
+        List<CustomerAccount> accounts = customerAccountRepository.findAll();
+        List<CustomerAccountInfoDto> filteredAccounts = new ArrayList<>();
+
+        for (CustomerAccount account : accounts) {
+            boolean matchfound = true;
+            
+            if (firstname != null && !account.getUser().getFirstname().equalsIgnoreCase(firstname)) {
+            	matchfound = false;
+            }
+            
+            if (lastname != null && !account.getUser().getLastname().equalsIgnoreCase(lastname)) {
+            	matchfound = false;
+            }
+            
+            if (accountNumber != null && !account.getAccountNumber().equals(accountNumber)) {
+            	matchfound = false;
+            }
+            
+            if (matchfound) {
+                filteredAccounts.add(convertToDto(account));
+            }
+        }
+        
+        return filteredAccounts;
+    }
+
+    private CustomerAccountInfoDto convertToDto(CustomerAccount account) {
+        return new CustomerAccountInfoDto(
+            account.getUser().getFirstname(),
+            account.getUser().getLastname(),
+            account.getAccountNumber(),
+            account.getCustomerBalance()
+        );
+    }
+    
+    @Override
+    public List<User> getAllCustomers() {
+        return customerRepository.findAll();
+    }
+
+    @Override
+    public List<User> getFilteredCustomers(String firstname, String lastname, Integer customerId) {
+        List<User> customers = customerRepository.findAll();
+        List<User> filteredCustomers = new ArrayList<>();
+
+        for (User customer : customers) {
+            boolean matchfound = true;
+
+            if (firstname != null && !customer.getFirstname().equalsIgnoreCase(firstname)) {
+            	matchfound = false;
+            }
+
+            if (lastname != null && !customer.getLastname().equalsIgnoreCase(lastname)) {
+            	matchfound = false;
+            }
+
+            if (customerId != null && customer.getUserId() != customerId) {
+            	matchfound = false;
+            }
+
+            if (matchfound) {
+                filteredCustomers.add(customer);
+            }
+        }
+
+        return filteredCustomers;
+    }
+}

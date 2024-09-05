@@ -1,0 +1,41 @@
+package com.aurionpro.bankapp.service;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.aurionpro.bankapp.entity.Customer;
+import com.aurionpro.bankapp.entity.CustomerAccount;
+import com.aurionpro.bankapp.repository.CustomerAccountRepository;
+import com.aurionpro.bankapp.repository.CustomerRepository;
+
+@Service
+public class AddCustomerBankAccountImpl implements AddCustomerBankAccount{
+	
+    @Autowired
+    private CustomerRepository customerRepository;
+
+    @Autowired
+    private CustomerAccountRepository customerAccountRepository;
+
+	@Override
+	public Optional<Customer> findCustomerById(int customerId) {
+		return customerRepository.findById(customerId);
+	}
+
+	@Override
+	public CustomerAccount createAccountForCustomer(Customer customer) {
+	    CustomerAccount account = new CustomerAccount();
+	    
+	    long accountNumber = (long) (1050 + Math.random() * 10000);
+	    account.setAccountNumber(accountNumber);
+	    
+	    account.setCustomerBalance(5000); // Initial balance for the account
+	    account.setCustomer(customer);
+	    
+	    return customerAccountRepository.save(account);
+	}
+
+
+}

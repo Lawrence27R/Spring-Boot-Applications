@@ -1,0 +1,10 @@
+package com.aurionpro.jwt.service;
+
+import com.aurionpro.jwt.dto.LoginDto;
+import com.aurionpro.jwt.dto.RegistrationDto;
+
+public interface AuthService {
+
+	User register(RegistrationDto registrationDto);
+	String login(LoginDto loginDto);
+}

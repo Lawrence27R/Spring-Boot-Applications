@@ -1,0 +1,5 @@
+package com.aurionpro.jwt.entity;
+
+public class Role {
+
+}
