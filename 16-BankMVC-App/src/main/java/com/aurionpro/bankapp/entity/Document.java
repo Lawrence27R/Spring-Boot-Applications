@@ -1,0 +1,36 @@
+package com.aurionpro.bankapp.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "document")
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class Document {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "documentId")
+    private int documentId;
+
+    @Column(name = "documentName")
+    private String name;
+
+    @Column(name = "documentUrl")
+    private String url;
+    
+    @ManyToOne
+    @JoinColumn(name = "userId", nullable = false)
+    private User user;
+}

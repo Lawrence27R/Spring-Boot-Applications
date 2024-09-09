@@ -1,21 +1,29 @@
 package com.aurionpro.bankapp.service;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.aurionpro.bankapp.dto.EditCustomerProfileDto;
 import com.aurionpro.bankapp.entity.CustomerAccount;
+import com.aurionpro.bankapp.entity.Document;
 import com.aurionpro.bankapp.entity.Transaction;
 import com.aurionpro.bankapp.entity.TypeOfTransaction;
 import com.aurionpro.bankapp.entity.User;
 import com.aurionpro.bankapp.repository.CustomerAccountRepository;
+import com.aurionpro.bankapp.repository.DocumentRepository;
 import com.aurionpro.bankapp.repository.TransactionRepository;
 import com.aurionpro.bankapp.repository.UserRepository;
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 
+import io.jsonwebtoken.io.IOException;
 import jakarta.mail.MessagingException;
 
 @Service
@@ -35,6 +43,13 @@ public class CustomerServiceImpl implements CustomerService{
     
     @Autowired
     private EmailSenderService emailSenderService;
+    
+    @Autowired
+    private DocumentRepository documentRepository;
+    
+    @Autowired
+    private Cloudinary cloudinary;
+    
 
     @Override
     public void deposit(long customerAccountNum, double amount) {
@@ -200,5 +215,43 @@ public class CustomerServiceImpl implements CustomerService{
     public Optional<User> findEmailId(String emailId) {
         return customerRepository.findByEmailId(emailId);
     }
+    
+    @Override
+    public boolean uploadDocuments(String email, List<MultipartFile> documents) throws IOException {
+        if (documents == null || documents.isEmpty()) {
+            throw new IllegalArgumentException("Cannot upload an empty list of files.");
+        }
+        
+        User user = customerRepository.findByEmailId(email)
+                .orElseThrow(() -> new IllegalArgumentException("Customer not found"));
+
+        for (MultipartFile document : documents) {
+            if (document.isEmpty()) {
+                throw new IllegalArgumentException("Cannot upload an empty file.");
+            }
+            
+            Map<String, Object> uploadResult;
+			try {
+				uploadResult = cloudinary.uploader().upload(document.getBytes(), ObjectUtils.emptyMap());
+				String documentUrl = (String) uploadResult.get("url");
+				Document uploadedDocument = new Document();
+				uploadedDocument.setName(document.getOriginalFilename());
+				uploadedDocument.setUrl(documentUrl);
+				uploadedDocument.setUser(user);
+				
+				documentRepository.save(uploadedDocument);
+				user.getDocuments().add(uploadedDocument);
+			} catch (java.io.IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+        }
+
+        customerRepository.save(user);
+        
+        return true;
+    }
+
 
 }

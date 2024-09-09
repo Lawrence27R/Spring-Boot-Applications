@@ -1,6 +1,5 @@
 package com.aurionpro.bankapp.service;
 
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.aurionpro.bankapp.dto.PageResponseDto;
 import com.aurionpro.bankapp.dto.TransactionDto;
+import com.aurionpro.bankapp.dto.TransactionFilterDto;
 import com.aurionpro.bankapp.entity.Transaction;
 import com.aurionpro.bankapp.repository.TransactionRepository;
 
@@ -20,35 +20,50 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Autowired
     private TransactionRepository transactionRepository;
-    
+
     @Override
-    public PageResponseDto<TransactionDto> getFilteredTransactions(Long accountNumber, Date startDate, Date endDate, String typeOfTransaction, int pageNumber, int pageSize) {
-    	Pageable pageable = PageRequest.of(pageNumber, pageSize);
-        Page<Transaction> transactions = transactionRepository.findByAccount_AccountNumber(accountNumber, pageable);
-        return filterAndConvertToDto(transactions, startDate, endDate, typeOfTransaction);
+    public PageResponseDto<TransactionDto> getFilteredTransactions(TransactionFilterDto filterDto, int pageNumber, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+
+        if (filterDto == null) {
+            filterDto = new TransactionFilterDto();
+        }
+
+        Page<Transaction> transactions;
+        if (filterDto.getCustomerAccountNum() != null) {
+            transactions = transactionRepository.findByAccount_AccountNumber(filterDto.getCustomerAccountNum(), pageable);
+        } else {
+            transactions = transactionRepository.findAll(pageable);
+        }
+        return filterAndConvertToDto(transactions, filterDto);
     }
 
     @Override
-    public PageResponseDto<TransactionDto> getAllTransactions(Long accountNumber, Date startDate, Date endDate, String typeOfTransaction, int pageNumber, int pageSize) {
-    	Pageable pageable = PageRequest.of(pageNumber, pageSize);
+    public PageResponseDto<TransactionDto> getAllTransactions(TransactionFilterDto filterDto, int pageNumber, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+
+        if (filterDto == null) {
+            filterDto = new TransactionFilterDto();
+        }
+
         Page<Transaction> transactions = transactionRepository.findAll(pageable);
-        return filterAndConvertToDto(transactions, startDate, endDate, typeOfTransaction);
+        return filterAndConvertToDto(transactions, filterDto);
     }
 
-    private PageResponseDto<TransactionDto> filterAndConvertToDto(Page<Transaction> transactions, Date startDate, Date endDate, String typeOfTransaction) {
+    private PageResponseDto<TransactionDto> filterAndConvertToDto(Page<Transaction> transactions, TransactionFilterDto filterDto) {
         List<TransactionDto> filteredTransactions = transactions.stream()
             .filter(transaction -> {
                 boolean matches = true;
 
-                if (startDate != null && transaction.getDate().before(startDate)) {
+                if (filterDto.getStartDate() != null && transaction.getDate().before(filterDto.getStartDate())) {
                     matches = false;
                 }
 
-                if (endDate != null && transaction.getDate().after(endDate)) {
+                if (filterDto.getEndDate() != null && transaction.getDate().after(filterDto.getEndDate())) {
                     matches = false;
                 }
 
-                if (typeOfTransaction != null && !transaction.getTypeOfTransaction().toString().equals(typeOfTransaction)) {
+                if (filterDto.getTypeOfTrans() != null && !transaction.getTypeOfTransaction().toString().equals(filterDto.getTypeOfTrans())) {
                     matches = false;
                 }
 
@@ -58,7 +73,7 @@ public class TransactionServiceImpl implements TransactionService {
             .collect(Collectors.toList());
 
         return new PageResponseDto<>(transactions.getTotalElements(), transactions.getTotalPages(), transactions.getSize(), filteredTransactions,
-        		transactions.isLast());
+                transactions.isLast());
     }
 
     private TransactionDto convertToDto(Transaction transaction) {

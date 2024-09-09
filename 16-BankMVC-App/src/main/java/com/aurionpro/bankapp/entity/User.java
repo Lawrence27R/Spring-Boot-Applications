@@ -49,6 +49,9 @@ public class User {
     @Email(message = "Email should be valid")
     @Column(unique = true, nullable = false)
     private String emailId;
+    
+    @NotBlank(message = "KycStatus is required")
+    private KycStatus kycStatus;
 
     @NotBlank(message = "Password is required")
     @Size(min = 8, message = "Password must be at least 8 characters long")
@@ -64,4 +67,8 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonBackReference
     private List<CustomerAccount> accounts;
+    
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonBackReference
+    private List<Document> documents;
 }

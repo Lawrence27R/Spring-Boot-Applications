@@ -1,5 +1,0 @@
-package com.aurionpro.jwt.config;
-
-public class SecurityConfig {
-
-}

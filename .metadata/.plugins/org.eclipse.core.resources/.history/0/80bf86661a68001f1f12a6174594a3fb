@@ -1,5 +1,0 @@
-package com.aurionpro.bankapp.security;
-
-public class JwtAuthenticationEntryPoint {
-
-}

@@ -1,8 +1,12 @@
 package com.aurionpro.bankapp.service;
 
+import java.util.List;
 import java.util.Optional;
 
+import com.aurionpro.bankapp.controllers.DocumentDto;
+import com.aurionpro.bankapp.dto.AdminGetCustomerDto;
 import com.aurionpro.bankapp.dto.CustomerAccountInfoDto;
+import com.aurionpro.bankapp.dto.CustomerDto;
 import com.aurionpro.bankapp.dto.PageResponseDto;
 import com.aurionpro.bankapp.entity.CustomerAccount;
 import com.aurionpro.bankapp.entity.User;
@@ -19,7 +23,7 @@ public interface AdminService {
 
 	public PageResponseDto<User> getAllCustomers(int pageNumber, int pageSize);
 
-	public PageResponseDto<User> getFilteredCustomers(String firstname, String lastname, Integer customerId,
-			int pageNumber, int pageSize);
+	public PageResponseDto<AdminGetCustomerDto> getFilteredCustomers(CustomerDto customerDto, int pageNumber, int pageSize);
 
+	List<DocumentDto> getDocumentsByCustomerId(int customerId);
 }

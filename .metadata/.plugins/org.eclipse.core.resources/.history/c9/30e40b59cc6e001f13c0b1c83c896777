@@ -1,0 +1,7 @@
+package com.aurionpro.bankapp.repository;
+
+import com.aurionpro.bankapp.entity.Document;
+
+public class DocumentRepository extends JpaRepository<Document, String> {
+
+}

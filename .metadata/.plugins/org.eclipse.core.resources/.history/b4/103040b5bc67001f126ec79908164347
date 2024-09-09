@@ -1,5 +1,0 @@
-package com.aurionpro.bankapp.exception;
-
-public class GlobalExceptionHandler {
-
-}

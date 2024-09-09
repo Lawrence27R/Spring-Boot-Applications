@@ -1,5 +1,0 @@
-package com.aurionpro.jwt.service;
-
-public interface AuthService {
-
-}

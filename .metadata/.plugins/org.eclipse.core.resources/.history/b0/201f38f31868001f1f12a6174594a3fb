@@ -1,5 +1,0 @@
-package com.aurionpro.bankapp.dto;
-
-public class RegistrationDto {
-
-}
