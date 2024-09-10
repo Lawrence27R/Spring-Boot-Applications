@@ -3,10 +3,10 @@ package com.aurionpro.bankapp.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.aurionpro.bankapp.controllers.DocumentDto;
 import com.aurionpro.bankapp.dto.AdminGetCustomerDto;
 import com.aurionpro.bankapp.dto.CustomerAccountInfoDto;
 import com.aurionpro.bankapp.dto.CustomerDto;
+import com.aurionpro.bankapp.dto.DocumentDto;
 import com.aurionpro.bankapp.dto.PageResponseDto;
 import com.aurionpro.bankapp.entity.CustomerAccount;
 import com.aurionpro.bankapp.entity.KycStatus;

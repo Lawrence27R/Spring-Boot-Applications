@@ -49,7 +49,8 @@ public class LoginController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginDto loginDto) {
-        String hiddenCaptcha = captchaCache.get(loginDto.getCaptchaId());
+
+        String hiddenCaptcha = captchaCache.get(loginDto.getCaptcha());
 
         if (hiddenCaptcha == null || !loginDto.getCaptcha().equalsIgnoreCase(hiddenCaptcha)) {
             ErrorResponsePageDto errorResponse = new ErrorResponsePageDto();
@@ -64,7 +65,7 @@ public class LoginController {
             JwtAuthResponse jwtAuthResponse = new JwtAuthResponse();
             jwtAuthResponse.setAccessToken(token);
 
-            captchaCache.remove(loginDto.getCaptchaId());
+            captchaCache.remove(loginDto.getCaptcha());
 
             return ResponseEntity.ok(jwtAuthResponse);
         } catch (Exception e) {
@@ -78,20 +79,22 @@ public class LoginController {
 
     @GetMapping("/captcha")
     public ResponseEntity<CaptchaSettings> getCaptcha() {
+
         Captcha captcha = CaptchaGeneratorService.generateCaptcha(250, 90);
         String encodedCaptcha = CaptchaGeneratorService.encodeCaptchatoBinary(captcha);
 
-        String captchaId = UUID.randomUUID().toString();
-        captchaCache.put(captchaId, captcha.getAnswer());
+        captchaCache.put(captcha.getAnswer(), captcha.getAnswer());
 
         CaptchaSettings captchaSettings = new CaptchaSettings();
-        captchaSettings.setCaptcha(encodedCaptcha);
-        captchaSettings.setCaptchaId(captchaId);
-        if (!isDebug) {
-        	captchaSettings.setHiddenCaptcha(null);
+        captchaSettings.setRealCaptcha(encodedCaptcha);
+
+        if (isDebug) {
+            captchaSettings.setCaptcha(captcha.getAnswer());
+        } else {
+            captchaSettings.setCaptcha(""); 
         }
-       	captchaSettings.setHiddenCaptcha(captcha.getAnswer());
 
         return ResponseEntity.ok(captchaSettings);
     }
 }
+

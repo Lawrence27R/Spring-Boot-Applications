@@ -22,7 +22,7 @@ public class TransactionServiceImpl implements TransactionService {
     private TransactionRepository transactionRepository;
 
     @Override
-    public PageResponseDto<TransactionDto> getFilteredTransactions(TransactionFilterDto filterDto, int pageNumber, int pageSize) {
+    public PageResponseDto<TransactionDto> getCustomerTransactions(TransactionFilterDto filterDto, int pageNumber, int pageSize) {
         Pageable pageable = PageRequest.of(pageNumber, pageSize);
 
         if (filterDto == null) {

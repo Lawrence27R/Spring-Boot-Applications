@@ -6,9 +6,8 @@ import java.util.Optional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.aurionpro.bankapp.dto.EditCustomerProfileDto;
+import com.aurionpro.bankapp.entity.KycStatus;
 import com.aurionpro.bankapp.entity.User;
-
-import io.jsonwebtoken.io.IOException;
 
 public interface CustomerService {
 	
@@ -22,6 +21,9 @@ public interface CustomerService {
 
 	Optional<User> findEmailId(String emailId);	
 	
-	boolean uploadDocuments(String email, List<MultipartFile> documents) throws IOException;
+	boolean uploadDocuments(String email, List<MultipartFile> documents);
+	
+	public KycStatus getKycStatus(String email);
+
 
 }

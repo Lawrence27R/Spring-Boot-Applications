@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.aurionpro.bankapp.dto.PageResponseDto;
 import com.aurionpro.bankapp.dto.TransactionDto;
 import com.aurionpro.bankapp.dto.TransactionFilterDto;
+import com.aurionpro.bankapp.entity.KycStatus;
 import com.aurionpro.bankapp.entity.User;
 import com.aurionpro.bankapp.security.JwtTokenProvider;
 import com.aurionpro.bankapp.service.CustomerService;
@@ -56,7 +57,7 @@ public class VIewCustomerPassbookController {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
 
-        PageResponseDto<TransactionDto> transactions = transactionService.getFilteredTransactions(
+        PageResponseDto<TransactionDto> transactions = transactionService.getCustomerTransactions(
                 filterDto,
                 pageNumber,
                 pageSize
@@ -64,4 +65,22 @@ public class VIewCustomerPassbookController {
 
         return new ResponseEntity<>(transactions, HttpStatus.OK);
     }
+	
+	@PreAuthorize("hasRole('CUSTOMER')")
+	@GetMapping("/kycstatus")
+	public ResponseEntity<KycStatus> getKycStatus(@RequestHeader("Authorization") String token) {
+
+	    String extractedToken = token.replace("Bearer ", "");
+
+	    String tokenUsername = jwtTokenProvider.getUsername(extractedToken);
+
+	    Optional<User> customer = customerService.findEmailId(tokenUsername);
+	    if (!customer.isPresent()) {
+	        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+	    }
+
+	    KycStatus kycStatus = customerService.getKycStatus(tokenUsername);
+	    return ResponseEntity.ok(kycStatus);
+	}
+
 }

@@ -6,7 +6,7 @@ import com.aurionpro.bankapp.dto.TransactionFilterDto;
 
 public interface TransactionService {
 
-    PageResponseDto<TransactionDto> getFilteredTransactions(TransactionFilterDto filterDto, int pageNumber, int pageSize);
+    PageResponseDto<TransactionDto> getCustomerTransactions(TransactionFilterDto filterDto, int pageNumber, int pageSize);
 
     PageResponseDto<TransactionDto> getAllTransactions(TransactionFilterDto filterDto, int pageNumber, int pageSize);
 }

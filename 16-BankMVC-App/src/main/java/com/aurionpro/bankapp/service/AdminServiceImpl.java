@@ -12,10 +12,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import com.aurionpro.bankapp.controllers.DocumentDto;
 import com.aurionpro.bankapp.dto.AdminGetCustomerDto;
 import com.aurionpro.bankapp.dto.CustomerAccountInfoDto;
 import com.aurionpro.bankapp.dto.CustomerDto;
+import com.aurionpro.bankapp.dto.DocumentDto;
 import com.aurionpro.bankapp.dto.PageResponseDto;
 import com.aurionpro.bankapp.entity.CustomerAccount;
 import com.aurionpro.bankapp.entity.Document;
@@ -216,15 +216,31 @@ public class AdminServiceImpl implements AdminService {
     
     @Override
     public User updateCustomerKyc(int customerId, KycStatus kycStatus) {
-        // Fetch the user by customerId
         User user = customerRepository.findById(customerId)
             .orElseThrow(() -> new UserApiException(HttpStatus.NOT_FOUND, "User not found"));
-
-        // Update the KYC status
         user.setKycStatus(kycStatus);
 
-        // Save the updated user entity
-        return customerRepository.save(user);
+        User updatedUser = customerRepository.save(user);
+
+        sendKycUpdateEmail(updatedUser, kycStatus);
+
+        return updatedUser;
     }
+
+    private void sendKycUpdateEmail(User user, KycStatus kycStatus) {
+        String subject = "Your KYC Status Has Been Updated";
+        String body = String.format("Dear %s %s, your KYC status has been updated to %s. "
+                + "Please contact us if you have any query.",
+                user.getFirstname(),
+                user.getLastname(),
+                kycStatus.name());
+
+        try {
+            emailSenderService.sendEmail(user.getEmailId(), body, subject, null);
+        } catch (MessagingException e) {
+            System.err.println("Failed to send KYC update email: " + e.getMessage());
+        }
+    }
+
 
 }

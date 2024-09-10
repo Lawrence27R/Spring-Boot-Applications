@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class CaptchaSettings {
+    private String realCaptcha;
     private String captcha;
-    private String hiddenCaptcha;
-    private String captchaId; 
 }

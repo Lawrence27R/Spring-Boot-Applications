@@ -920,3 +920,866 @@ java.sql.SQLException: Check constraint 'users_chk_1' is violated.
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.28.jar:10.1.28]
 	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
 
+2024-09-10T22:35:19.003+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T22:35:19.006+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T22:35:19.058+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-09-10T22:35:19.058+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-09-10T22:35:20.036+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T22:35:20.135+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 91 ms. Found 5 JPA repository interfaces.
+2024-09-10T22:35:20.862+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T22:35:20.883+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T22:35:20.884+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T22:35:20.942+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T22:35:20.943+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1884 ms
+2024-09-10T22:35:21.120+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T22:35:21.190+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-09-10T22:35:21.233+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T22:35:21.556+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T22:35:21.588+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-10T22:35:21.972+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@381b4343
+2024-09-10T22:35:21.977+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-10T22:35:23.047+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T22:35:23.146+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:35:23.376+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-09-10T22:35:24.058+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T22:35:24.209+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T22:35:24.802+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T22:35:24.866+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T22:35:24.881+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 6.346 seconds (process running for 7.012)
+2024-09-10T22:35:28.672+05:30  INFO 9356 --- [16-BankMVC-App] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-09-10T22:35:28.673+05:30  INFO 9356 --- [16-BankMVC-App] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-09-10T22:35:28.675+05:30  INFO 9356 --- [16-BankMVC-App] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-09-10T22:36:06.501+05:30  WARN 9356 --- [16-BankMVC-App] [http-nio-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'email' for method parameter type String is not present]
+2024-09-10T22:36:13.795+05:30  WARN 9356 --- [16-BankMVC-App] [http-nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'email' for method parameter type String is not present]
+2024-09-10T22:36:56.395+05:30  INFO 9356 --- [16-BankMVC-App] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-09-10T22:36:56.407+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:36:56.412+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-10T22:36:56.424+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-09-10T22:36:56.520+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T22:36:56.521+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T22:36:56.794+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T22:36:56.844+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 49 ms. Found 5 JPA repository interfaces.
+2024-09-10T22:36:56.958+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T22:36:56.960+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T22:36:56.960+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T22:36:56.982+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T22:36:56.982+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 458 ms
+2024-09-10T22:36:57.024+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T22:36:57.026+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T22:36:57.033+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T22:36:57.034+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2024-09-10T22:36:57.052+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@623da386
+2024-09-10T22:36:57.053+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2024-09-10T22:36:57.163+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T22:36:57.199+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:36:57.351+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T22:36:57.463+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T22:36:57.635+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T22:36:57.651+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T22:36:57.654+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 1.171 seconds (process running for 99.786)
+2024-09-10T22:36:57.657+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-09-10T22:37:56.379+05:30  INFO 9356 --- [16-BankMVC-App] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-09-10T22:37:56.388+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:37:56.389+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2024-09-10T22:37:56.395+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2024-09-10T22:37:56.498+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T22:37:56.498+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T22:37:56.743+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T22:37:56.788+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44 ms. Found 5 JPA repository interfaces.
+2024-09-10T22:37:56.881+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T22:37:56.882+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T22:37:56.882+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T22:37:56.908+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T22:37:56.908+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 407 ms
+2024-09-10T22:37:56.949+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T22:37:56.951+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T22:37:56.959+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T22:37:56.960+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2024-09-10T22:37:56.974+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7a82a2ba
+2024-09-10T22:37:56.974+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2024-09-10T22:37:57.069+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T22:37:57.105+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:37:57.222+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T22:37:57.282+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T22:37:57.396+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T22:37:57.405+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T22:37:57.408+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 0.938 seconds (process running for 159.539)
+2024-09-10T22:37:57.410+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-09-10T22:38:01.500+05:30  INFO 9356 --- [16-BankMVC-App] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-09-10T22:38:01.501+05:30  INFO 9356 --- [16-BankMVC-App] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-09-10T22:38:01.502+05:30  INFO 9356 --- [16-BankMVC-App] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-09-10T22:39:46.398+05:30  INFO 9356 --- [16-BankMVC-App] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 8 class path changes (1 addition, 1 deletion, 6 modifications)
+2024-09-10T22:39:46.407+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-11] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:39:46.407+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2024-09-10T22:39:46.415+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2024-09-10T22:39:46.525+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T22:39:46.525+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T22:39:46.787+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T22:39:46.834+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47 ms. Found 5 JPA repository interfaces.
+2024-09-10T22:39:46.918+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T22:39:46.919+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T22:39:46.919+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T22:39:46.938+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T22:39:46.938+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 411 ms
+2024-09-10T22:39:46.972+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T22:39:46.974+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T22:39:46.980+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T22:39:46.981+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2024-09-10T22:39:46.996+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@51c2c588
+2024-09-10T22:39:46.996+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2024-09-10T22:39:47.084+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T22:39:47.118+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:39:47.246+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T22:39:47.308+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T22:39:47.428+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T22:39:47.436+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T22:39:47.439+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 0.941 seconds (process running for 269.57)
+2024-09-10T22:39:47.441+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-09-10T22:40:08.315+05:30  INFO 9356 --- [16-BankMVC-App] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 2 class path changes (0 additions, 0 deletions, 2 modifications)
+2024-09-10T22:40:08.324+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-15] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:40:08.325+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-15] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2024-09-10T22:40:08.331+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-15] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2024-09-10T22:40:08.426+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T22:40:08.427+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T22:40:08.672+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T22:40:08.709+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36 ms. Found 5 JPA repository interfaces.
+2024-09-10T22:40:08.787+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T22:40:08.788+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T22:40:08.788+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T22:40:08.814+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T22:40:08.814+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 385 ms
+2024-09-10T22:40:08.861+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T22:40:08.863+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T22:40:08.870+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T22:40:08.871+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2024-09-10T22:40:08.887+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-5 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7750737
+2024-09-10T22:40:08.887+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2024-09-10T22:40:08.983+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T22:40:09.019+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:40:09.150+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T22:40:09.207+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T22:40:09.320+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T22:40:09.331+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T22:40:09.334+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 0.934 seconds (process running for 291.464)
+2024-09-10T22:40:09.335+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-09-10T22:40:29.189+05:30  INFO 9356 --- [16-BankMVC-App] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 2 class path changes (0 additions, 0 deletions, 2 modifications)
+2024-09-10T22:40:29.197+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-19] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:40:29.198+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-19] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2024-09-10T22:40:29.203+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-19] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2024-09-10T22:40:29.307+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T22:40:29.307+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T22:40:29.557+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T22:40:29.590+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33 ms. Found 5 JPA repository interfaces.
+2024-09-10T22:40:29.677+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T22:40:29.678+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T22:40:29.679+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T22:40:29.702+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T22:40:29.702+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 393 ms
+2024-09-10T22:40:29.730+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T22:40:29.731+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T22:40:29.740+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T22:40:29.741+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2024-09-10T22:40:29.758+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-6 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6cbcc598
+2024-09-10T22:40:29.758+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2024-09-10T22:40:29.847+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T22:40:29.883+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:40:30.002+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T22:40:30.064+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T22:40:30.185+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T22:40:30.192+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T22:40:30.195+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 0.91 seconds (process running for 312.326)
+2024-09-10T22:40:30.196+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-09-10T22:41:08.554+05:30  INFO 9356 --- [16-BankMVC-App] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-09-10T22:41:08.562+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-23] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:41:08.563+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-23] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2024-09-10T22:41:08.568+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-23] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
+2024-09-10T22:41:08.666+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T22:41:08.666+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T22:41:08.898+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T22:41:08.939+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 5 JPA repository interfaces.
+2024-09-10T22:41:09.006+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T22:41:09.007+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T22:41:09.007+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T22:41:09.029+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T22:41:09.030+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 363 ms
+2024-09-10T22:41:09.056+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T22:41:09.058+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T22:41:09.066+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T22:41:09.067+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
+2024-09-10T22:41:09.083+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-7 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1b05b37b
+2024-09-10T22:41:09.083+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
+2024-09-10T22:41:09.169+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T22:41:09.209+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:41:09.322+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T22:41:09.374+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T22:41:09.472+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T22:41:09.482+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T22:41:09.485+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 0.841 seconds (process running for 351.616)
+2024-09-10T22:41:09.486+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-09-10T22:41:21.151+05:30  INFO 9356 --- [16-BankMVC-App] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-09-10T22:41:21.160+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-27] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:41:21.161+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-27] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown initiated...
+2024-09-10T22:41:21.166+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-27] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown completed.
+2024-09-10T22:41:21.266+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T22:41:21.266+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T22:41:21.502+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T22:41:21.538+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36 ms. Found 5 JPA repository interfaces.
+2024-09-10T22:41:21.605+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T22:41:21.605+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T22:41:21.605+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T22:41:21.621+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T22:41:21.621+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 353 ms
+2024-09-10T22:41:21.653+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T22:41:21.654+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T22:41:21.662+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T22:41:21.663+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
+2024-09-10T22:41:21.678+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-8 - Added connection com.mysql.cj.jdbc.ConnectionImpl@763097f9
+2024-09-10T22:41:21.678+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Start completed.
+2024-09-10T22:41:21.760+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T22:41:21.791+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:41:21.891+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T22:41:21.942+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T22:41:22.041+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T22:41:22.048+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T22:41:22.051+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 0.806 seconds (process running for 364.181)
+2024-09-10T22:41:22.052+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-09-10T22:42:00.221+05:30  INFO 9356 --- [16-BankMVC-App] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-09-10T22:42:00.222+05:30  INFO 9356 --- [16-BankMVC-App] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-09-10T22:42:00.222+05:30  INFO 9356 --- [16-BankMVC-App] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-09-10T22:42:40.412+05:30  INFO 9356 --- [16-BankMVC-App] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 2 class path changes (0 additions, 0 deletions, 2 modifications)
+2024-09-10T22:42:40.420+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-31] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:42:40.421+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-31] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown initiated...
+2024-09-10T22:42:40.426+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-31] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown completed.
+2024-09-10T22:42:40.524+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T22:42:40.524+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T22:42:40.733+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T22:42:40.773+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 39 ms. Found 5 JPA repository interfaces.
+2024-09-10T22:42:40.844+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T22:42:40.845+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T22:42:40.845+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T22:42:40.863+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T22:42:40.863+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 337 ms
+2024-09-10T22:42:40.887+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T22:42:40.889+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T22:42:40.894+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T22:42:40.895+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Starting...
+2024-09-10T22:42:40.910+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-9 - Added connection com.mysql.cj.jdbc.ConnectionImpl@a4fff72
+2024-09-10T22:42:40.910+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Start completed.
+2024-09-10T22:42:40.990+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T22:42:41.018+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:42:41.122+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T22:42:41.171+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T22:42:41.267+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T22:42:41.274+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T22:42:41.276+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 0.776 seconds (process running for 443.408)
+2024-09-10T22:42:41.277+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-09-10T22:42:51.963+05:30  INFO 9356 --- [16-BankMVC-App] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-09-10T22:42:51.971+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-35] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:42:51.972+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-35] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown initiated...
+2024-09-10T22:42:51.983+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-35] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown completed.
+2024-09-10T22:42:52.088+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T22:42:52.088+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T22:42:52.298+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T22:42:52.342+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 5 JPA repository interfaces.
+2024-09-10T22:42:52.409+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T22:42:52.409+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T22:42:52.409+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T22:42:52.431+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T22:42:52.431+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 341 ms
+2024-09-10T22:42:52.466+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T22:42:52.468+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T22:42:52.477+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T22:42:52.477+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Starting...
+2024-09-10T22:42:52.493+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-10 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5a3fd9e3
+2024-09-10T22:42:52.493+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Start completed.
+2024-09-10T22:42:52.580+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T22:42:52.623+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:42:52.738+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T22:42:52.796+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T22:42:52.923+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T22:42:52.930+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T22:42:52.932+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 0.861 seconds (process running for 455.063)
+2024-09-10T22:42:52.933+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-09-10T22:43:11.768+05:30  INFO 9356 --- [16-BankMVC-App] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-09-10T22:43:11.777+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-39] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:43:11.777+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-39] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Shutdown initiated...
+2024-09-10T22:43:11.781+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-39] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Shutdown completed.
+2024-09-10T22:43:11.879+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T22:43:11.879+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T22:43:12.110+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T22:43:12.157+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 46 ms. Found 5 JPA repository interfaces.
+2024-09-10T22:43:12.215+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T22:43:12.215+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T22:43:12.216+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T22:43:12.233+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T22:43:12.233+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 353 ms
+2024-09-10T22:43:12.263+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T22:43:12.265+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T22:43:12.271+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T22:43:12.271+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Starting...
+2024-09-10T22:43:12.285+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-11 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3ec25b9f
+2024-09-10T22:43:12.285+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Start completed.
+2024-09-10T22:43:12.373+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T22:43:12.414+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:43:12.595+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T22:43:12.644+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T22:43:12.729+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T22:43:12.741+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T22:43:12.744+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 0.883 seconds (process running for 474.875)
+2024-09-10T22:43:12.744+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-09-10T22:43:14.383+05:30  INFO 9356 --- [16-BankMVC-App] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-09-10T22:43:14.383+05:30  INFO 9356 --- [16-BankMVC-App] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-09-10T22:43:14.383+05:30  INFO 9356 --- [16-BankMVC-App] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-09-10T22:45:42.880+05:30  INFO 9356 --- [16-BankMVC-App] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-09-10T22:45:42.887+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-43] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:45:42.888+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-43] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Shutdown initiated...
+2024-09-10T22:45:42.893+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-43] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Shutdown completed.
+2024-09-10T22:45:43.005+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T22:45:43.005+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T22:45:43.227+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T22:45:43.256+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29 ms. Found 5 JPA repository interfaces.
+2024-09-10T22:45:43.322+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T22:45:43.323+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T22:45:43.323+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T22:45:43.344+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T22:45:43.344+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 337 ms
+2024-09-10T22:45:43.373+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T22:45:43.374+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T22:45:43.379+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T22:45:43.379+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Starting...
+2024-09-10T22:45:43.393+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-12 - Added connection com.mysql.cj.jdbc.ConnectionImpl@258e9c24
+2024-09-10T22:45:43.393+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Start completed.
+2024-09-10T22:45:43.470+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T22:45:43.501+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:45:43.599+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T22:45:43.648+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T22:45:43.742+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T22:45:43.749+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T22:45:43.751+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 0.771 seconds (process running for 625.882)
+2024-09-10T22:45:43.752+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-09-10T22:45:52.333+05:30  INFO 9356 --- [16-BankMVC-App] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-09-10T22:45:52.341+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-47] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:45:52.341+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-47] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Shutdown initiated...
+2024-09-10T22:45:52.346+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-47] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Shutdown completed.
+2024-09-10T22:45:52.460+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T22:45:52.460+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T22:45:52.712+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T22:45:52.748+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36 ms. Found 5 JPA repository interfaces.
+2024-09-10T22:45:52.805+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T22:45:52.805+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T22:45:52.806+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T22:45:52.828+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T22:45:52.828+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 366 ms
+2024-09-10T22:45:52.850+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T22:45:52.851+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T22:45:52.856+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T22:45:52.856+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-13 - Starting...
+2024-09-10T22:45:52.872+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-13 - Added connection com.mysql.cj.jdbc.ConnectionImpl@30a7a1b
+2024-09-10T22:45:52.872+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-13 - Start completed.
+2024-09-10T22:45:52.952+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T22:45:52.989+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:45:53.086+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T22:45:53.135+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T22:45:53.233+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T22:45:53.240+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T22:45:53.243+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 0.807 seconds (process running for 635.375)
+2024-09-10T22:45:53.245+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-09-10T22:45:58.870+05:30  INFO 9356 --- [16-BankMVC-App] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-09-10T22:45:58.870+05:30  INFO 9356 --- [16-BankMVC-App] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-09-10T22:45:58.871+05:30  INFO 9356 --- [16-BankMVC-App] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-09-10T22:47:01.352+05:30  INFO 9356 --- [16-BankMVC-App] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-09-10T22:47:01.360+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-51] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:47:01.360+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-51] com.zaxxer.hikari.HikariDataSource       : HikariPool-13 - Shutdown initiated...
+2024-09-10T22:47:01.366+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-51] com.zaxxer.hikari.HikariDataSource       : HikariPool-13 - Shutdown completed.
+2024-09-10T22:47:01.502+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T22:47:01.503+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T22:47:01.703+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T22:47:01.745+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 5 JPA repository interfaces.
+2024-09-10T22:47:01.812+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T22:47:01.813+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T22:47:01.813+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T22:47:01.834+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T22:47:01.834+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 330 ms
+2024-09-10T22:47:01.861+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T22:47:01.863+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T22:47:01.869+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T22:47:01.870+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-14 - Starting...
+2024-09-10T22:47:01.892+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-14 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5e375050
+2024-09-10T22:47:01.892+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-14 - Start completed.
+2024-09-10T22:47:01.964+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T22:47:02.004+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:47:02.099+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T22:47:02.145+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T22:47:02.247+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T22:47:02.254+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T22:47:02.256+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 0.78 seconds (process running for 704.387)
+2024-09-10T22:47:02.256+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-09-10T22:47:10.871+05:30  INFO 9356 --- [16-BankMVC-App] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-09-10T22:47:10.879+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-55] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:47:10.880+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-55] com.zaxxer.hikari.HikariDataSource       : HikariPool-14 - Shutdown initiated...
+2024-09-10T22:47:10.884+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-55] com.zaxxer.hikari.HikariDataSource       : HikariPool-14 - Shutdown completed.
+2024-09-10T22:47:11.006+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T22:47:11.006+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T22:47:11.236+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T22:47:11.277+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 5 JPA repository interfaces.
+2024-09-10T22:47:11.345+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T22:47:11.345+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T22:47:11.346+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T22:47:11.363+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T22:47:11.363+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 355 ms
+2024-09-10T22:47:11.389+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T22:47:11.391+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T22:47:11.395+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T22:47:11.396+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-15 - Starting...
+2024-09-10T22:47:11.416+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-15 - Added connection com.mysql.cj.jdbc.ConnectionImpl@62bff300
+2024-09-10T22:47:11.416+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-15 - Start completed.
+2024-09-10T22:47:11.485+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T22:47:11.519+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:47:11.657+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T22:47:11.729+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T22:47:11.890+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T22:47:11.897+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T22:47:11.899+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 0.918 seconds (process running for 714.03)
+2024-09-10T22:47:11.900+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-09-10T22:47:18.457+05:30  INFO 9356 --- [16-BankMVC-App] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-09-10T22:47:18.465+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-59] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:47:18.465+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-59] com.zaxxer.hikari.HikariDataSource       : HikariPool-15 - Shutdown initiated...
+2024-09-10T22:47:18.470+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-59] com.zaxxer.hikari.HikariDataSource       : HikariPool-15 - Shutdown completed.
+2024-09-10T22:47:18.603+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T22:47:18.603+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T22:47:18.776+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T22:47:18.817+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 5 JPA repository interfaces.
+2024-09-10T22:47:18.902+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T22:47:18.903+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T22:47:18.903+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T22:47:18.922+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T22:47:18.922+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 317 ms
+2024-09-10T22:47:18.954+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T22:47:18.956+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T22:47:18.961+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T22:47:18.961+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-16 - Starting...
+2024-09-10T22:47:18.977+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-16 - Added connection com.mysql.cj.jdbc.ConnectionImpl@70d446a2
+2024-09-10T22:47:18.977+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-16 - Start completed.
+2024-09-10T22:47:19.061+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T22:47:19.099+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:47:19.217+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T22:47:19.278+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T22:47:19.402+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T22:47:19.411+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T22:47:19.414+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 0.839 seconds (process running for 721.545)
+2024-09-10T22:47:19.415+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-09-10T22:48:34.799+05:30  INFO 9356 --- [16-BankMVC-App] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-09-10T22:48:34.799+05:30  INFO 9356 --- [16-BankMVC-App] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-09-10T22:48:34.800+05:30  INFO 9356 --- [16-BankMVC-App] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-09-10T22:53:31.550+05:30  INFO 9356 --- [16-BankMVC-App] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-09-10T22:53:31.560+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-63] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:53:31.560+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-63] com.zaxxer.hikari.HikariDataSource       : HikariPool-16 - Shutdown initiated...
+2024-09-10T22:53:31.568+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-63] com.zaxxer.hikari.HikariDataSource       : HikariPool-16 - Shutdown completed.
+2024-09-10T22:53:31.694+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T22:53:31.695+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T22:53:31.924+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T22:53:31.962+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 37 ms. Found 5 JPA repository interfaces.
+2024-09-10T22:53:32.017+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T22:53:32.017+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T22:53:32.017+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T22:53:32.034+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T22:53:32.034+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 338 ms
+2024-09-10T22:53:32.063+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T22:53:32.064+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T22:53:32.070+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T22:53:32.071+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-17 - Starting...
+2024-09-10T22:53:32.086+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Added connection com.mysql.cj.jdbc.ConnectionImpl@65288dea
+2024-09-10T22:53:32.086+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-17 - Start completed.
+2024-09-10T22:53:32.169+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T22:53:32.218+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:53:32.335+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T22:53:32.381+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T22:53:32.477+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T22:53:32.488+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T22:53:32.490+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 0.815 seconds (process running for 1094.621)
+2024-09-10T22:53:32.491+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-09-10T22:53:56.519+05:30  INFO 9356 --- [16-BankMVC-App] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-09-10T22:53:56.527+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-67] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:53:56.527+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-67] com.zaxxer.hikari.HikariDataSource       : HikariPool-17 - Shutdown initiated...
+2024-09-10T22:53:56.532+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-67] com.zaxxer.hikari.HikariDataSource       : HikariPool-17 - Shutdown completed.
+2024-09-10T22:53:56.656+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T22:53:56.656+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T22:53:56.896+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T22:53:56.932+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35 ms. Found 5 JPA repository interfaces.
+2024-09-10T22:53:56.996+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T22:53:56.996+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T22:53:56.996+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T22:53:57.015+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T22:53:57.015+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 357 ms
+2024-09-10T22:53:57.053+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T22:53:57.055+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T22:53:57.060+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T22:53:57.061+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-18 - Starting...
+2024-09-10T22:53:57.101+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-18 - Added connection com.mysql.cj.jdbc.ConnectionImpl@321eb3a2
+2024-09-10T22:53:57.101+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-18 - Start completed.
+2024-09-10T22:53:57.198+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T22:53:57.239+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:53:57.379+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T22:53:57.426+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T22:53:57.525+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T22:53:57.531+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T22:53:57.534+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 0.897 seconds (process running for 1119.665)
+2024-09-10T22:53:57.535+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-09-10T22:54:17.408+05:30  INFO 9356 --- [16-BankMVC-App] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-09-10T22:54:17.417+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-71] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:54:17.418+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-71] com.zaxxer.hikari.HikariDataSource       : HikariPool-18 - Shutdown initiated...
+2024-09-10T22:54:17.423+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-71] com.zaxxer.hikari.HikariDataSource       : HikariPool-18 - Shutdown completed.
+2024-09-10T22:54:17.563+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T22:54:17.563+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T22:54:17.750+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T22:54:17.782+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 31 ms. Found 5 JPA repository interfaces.
+2024-09-10T22:54:17.838+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T22:54:17.839+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T22:54:17.839+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T22:54:17.857+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T22:54:17.857+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 293 ms
+2024-09-10T22:54:17.883+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T22:54:17.885+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T22:54:17.891+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T22:54:17.892+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-19 - Starting...
+2024-09-10T22:54:17.906+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-19 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4cfb67bd
+2024-09-10T22:54:17.907+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-19 - Start completed.
+2024-09-10T22:54:17.969+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T22:54:18.009+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:54:18.113+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T22:54:18.162+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T22:54:18.266+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T22:54:18.276+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T22:54:18.279+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 0.737 seconds (process running for 1140.411)
+2024-09-10T22:54:18.280+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-09-10T22:54:38.198+05:30  INFO 9356 --- [16-BankMVC-App] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-09-10T22:54:38.206+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-75] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:54:38.207+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-75] com.zaxxer.hikari.HikariDataSource       : HikariPool-19 - Shutdown initiated...
+2024-09-10T22:54:38.212+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-75] com.zaxxer.hikari.HikariDataSource       : HikariPool-19 - Shutdown completed.
+2024-09-10T22:54:38.360+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T22:54:38.360+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T22:54:38.576+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T22:54:38.628+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 51 ms. Found 5 JPA repository interfaces.
+2024-09-10T22:54:38.679+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T22:54:38.680+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T22:54:38.680+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T22:54:38.700+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T22:54:38.700+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 339 ms
+2024-09-10T22:54:38.726+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T22:54:38.727+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T22:54:38.732+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T22:54:38.732+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-20 - Starting...
+2024-09-10T22:54:38.745+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-20 - Added connection com.mysql.cj.jdbc.ConnectionImpl@487e00d5
+2024-09-10T22:54:38.745+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-20 - Start completed.
+2024-09-10T22:54:38.813+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T22:54:38.846+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:54:38.949+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T22:54:38.997+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T22:54:39.112+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T22:54:39.118+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T22:54:39.120+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 0.787 seconds (process running for 1161.251)
+2024-09-10T22:54:39.121+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-09-10T22:55:04.104+05:30  INFO 9356 --- [16-BankMVC-App] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-09-10T22:55:04.113+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-79] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:55:04.113+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-79] com.zaxxer.hikari.HikariDataSource       : HikariPool-20 - Shutdown initiated...
+2024-09-10T22:55:04.117+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-79] com.zaxxer.hikari.HikariDataSource       : HikariPool-20 - Shutdown completed.
+2024-09-10T22:55:04.257+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T22:55:04.257+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T22:55:04.470+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T22:55:04.511+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 41 ms. Found 5 JPA repository interfaces.
+2024-09-10T22:55:04.569+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T22:55:04.569+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T22:55:04.569+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T22:55:04.588+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T22:55:04.588+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 329 ms
+2024-09-10T22:55:04.614+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T22:55:04.615+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T22:55:04.620+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T22:55:04.620+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-21 - Starting...
+2024-09-10T22:55:04.633+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-21 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3f6f8f45
+2024-09-10T22:55:04.634+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-21 - Start completed.
+2024-09-10T22:55:04.706+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T22:55:04.737+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:55:04.869+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T22:55:04.918+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T22:55:05.011+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T22:55:05.019+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T22:55:05.021+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 0.789 seconds (process running for 1187.152)
+2024-09-10T22:55:05.022+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-09-10T22:55:15.677+05:30  INFO 9356 --- [16-BankMVC-App] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 64 class path changes (0 additions, 0 deletions, 64 modifications)
+2024-09-10T22:55:15.685+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-83] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:55:15.685+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-83] com.zaxxer.hikari.HikariDataSource       : HikariPool-21 - Shutdown initiated...
+2024-09-10T22:55:15.689+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-83] com.zaxxer.hikari.HikariDataSource       : HikariPool-21 - Shutdown completed.
+2024-09-10T22:55:15.809+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T22:55:15.809+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T22:55:15.992+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T22:55:16.029+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 37 ms. Found 5 JPA repository interfaces.
+2024-09-10T22:55:16.089+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T22:55:16.089+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T22:55:16.089+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T22:55:16.110+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T22:55:16.110+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 299 ms
+2024-09-10T22:55:16.135+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T22:55:16.136+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T22:55:16.141+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T22:55:16.141+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-22 - Starting...
+2024-09-10T22:55:16.155+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-22 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5006e9ce
+2024-09-10T22:55:16.155+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-22 - Start completed.
+2024-09-10T22:55:16.228+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T22:55:16.266+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:55:16.356+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T22:55:16.403+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T22:55:16.497+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T22:55:16.504+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T22:55:16.505+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 0.715 seconds (process running for 1198.636)
+2024-09-10T22:55:16.506+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-09-10T22:55:50.713+05:30  INFO 9356 --- [16-BankMVC-App] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-09-10T22:55:50.721+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-87] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:55:50.721+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-87] com.zaxxer.hikari.HikariDataSource       : HikariPool-22 - Shutdown initiated...
+2024-09-10T22:55:50.726+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-87] com.zaxxer.hikari.HikariDataSource       : HikariPool-22 - Shutdown completed.
+2024-09-10T22:55:50.867+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T22:55:50.867+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T22:55:51.097+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T22:55:51.144+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47 ms. Found 5 JPA repository interfaces.
+2024-09-10T22:55:51.209+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T22:55:51.209+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T22:55:51.209+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T22:55:51.227+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T22:55:51.227+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 359 ms
+2024-09-10T22:55:51.254+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T22:55:51.256+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T22:55:51.260+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T22:55:51.261+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-23 - Starting...
+2024-09-10T22:55:51.275+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-23 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3df5445f
+2024-09-10T22:55:51.275+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-23 - Start completed.
+2024-09-10T22:55:51.341+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T22:55:51.375+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:55:51.482+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T22:55:51.529+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T22:55:51.624+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T22:55:51.640+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T22:55:51.643+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 0.802 seconds (process running for 1233.773)
+2024-09-10T22:55:51.644+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-09-10T22:56:32.084+05:30  INFO 9356 --- [16-BankMVC-App] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-09-10T22:56:32.092+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-91] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:56:32.092+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-91] com.zaxxer.hikari.HikariDataSource       : HikariPool-23 - Shutdown initiated...
+2024-09-10T22:56:32.098+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-91] com.zaxxer.hikari.HikariDataSource       : HikariPool-23 - Shutdown completed.
+2024-09-10T22:56:32.225+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T22:56:32.225+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T22:56:32.423+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T22:56:32.460+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36 ms. Found 5 JPA repository interfaces.
+2024-09-10T22:56:32.517+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T22:56:32.518+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T22:56:32.518+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T22:56:32.539+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T22:56:32.539+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 313 ms
+2024-09-10T22:56:32.562+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T22:56:32.563+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T22:56:32.567+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T22:56:32.568+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-24 - Starting...
+2024-09-10T22:56:32.585+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-24 - Added connection com.mysql.cj.jdbc.ConnectionImpl@15cb26fd
+2024-09-10T22:56:32.586+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-24 - Start completed.
+2024-09-10T22:56:32.648+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T22:56:32.674+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:56:32.787+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T22:56:32.836+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T22:56:32.945+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T22:56:32.958+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T22:56:32.959+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 0.755 seconds (process running for 1275.091)
+2024-09-10T22:56:32.960+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-09-10T22:57:12.356+05:30  INFO 9356 --- [16-BankMVC-App] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-09-10T22:57:12.393+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-95] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:57:12.393+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-95] com.zaxxer.hikari.HikariDataSource       : HikariPool-24 - Shutdown initiated...
+2024-09-10T22:57:12.399+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-95] com.zaxxer.hikari.HikariDataSource       : HikariPool-24 - Shutdown completed.
+2024-09-10T22:57:12.540+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T22:57:12.540+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T22:57:12.701+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T22:57:12.733+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 31 ms. Found 5 JPA repository interfaces.
+2024-09-10T22:57:12.791+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T22:57:12.792+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T22:57:12.792+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T22:57:12.832+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T22:57:12.832+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 290 ms
+2024-09-10T22:57:12.857+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T22:57:12.858+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T22:57:12.863+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T22:57:12.864+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-25 - Starting...
+2024-09-10T22:57:12.877+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-25 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1c31b69a
+2024-09-10T22:57:12.877+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-25 - Start completed.
+2024-09-10T22:57:12.940+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T22:57:12.973+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:57:13.067+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T22:57:13.110+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T22:57:13.209+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T22:57:13.217+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T22:57:13.219+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 0.7 seconds (process running for 1315.349)
+2024-09-10T22:57:13.220+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-09-10T22:58:36.751+05:30  INFO 9356 --- [16-BankMVC-App] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-09-10T22:58:36.759+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-99] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:58:36.760+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-99] com.zaxxer.hikari.HikariDataSource       : HikariPool-25 - Shutdown initiated...
+2024-09-10T22:58:36.765+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-99] com.zaxxer.hikari.HikariDataSource       : HikariPool-25 - Shutdown completed.
+2024-09-10T22:58:36.901+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T22:58:36.902+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T22:58:37.110+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T22:58:37.146+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35 ms. Found 5 JPA repository interfaces.
+2024-09-10T22:58:37.209+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T22:58:37.210+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T22:58:37.210+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T22:58:37.227+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T22:58:37.227+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 324 ms
+2024-09-10T22:58:37.248+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T22:58:37.250+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T22:58:37.255+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T22:58:37.256+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-26 - Starting...
+2024-09-10T22:58:37.271+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-26 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6ea47bb8
+2024-09-10T22:58:37.271+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-26 - Start completed.
+2024-09-10T22:58:37.343+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T22:58:37.377+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:58:37.476+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T22:58:37.520+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T22:58:37.614+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T22:58:37.628+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T22:58:37.630+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 0.75 seconds (process running for 1399.76)
+2024-09-10T22:58:37.631+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-09-10T22:58:53.431+05:30  INFO 9356 --- [16-BankMVC-App] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-09-10T22:58:53.439+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-103] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:58:53.440+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-103] com.zaxxer.hikari.HikariDataSource       : HikariPool-26 - Shutdown initiated...
+2024-09-10T22:58:53.445+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-103] com.zaxxer.hikari.HikariDataSource       : HikariPool-26 - Shutdown completed.
+2024-09-10T22:58:53.577+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T22:58:53.577+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T22:58:53.778+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T22:58:53.812+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33 ms. Found 5 JPA repository interfaces.
+2024-09-10T22:58:53.868+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T22:58:53.869+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T22:58:53.869+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T22:58:53.889+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T22:58:53.889+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 311 ms
+2024-09-10T22:58:53.912+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T22:58:53.913+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T22:58:53.918+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T22:58:53.918+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-27 - Starting...
+2024-09-10T22:58:53.932+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-27 - Added connection com.mysql.cj.jdbc.ConnectionImpl@23559e17
+2024-09-10T22:58:53.932+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-27 - Start completed.
+2024-09-10T22:58:53.996+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T22:58:54.025+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:58:54.143+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T22:58:54.190+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T22:58:54.309+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T22:58:54.317+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T22:58:54.319+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 0.762 seconds (process running for 1416.45)
+2024-09-10T22:58:54.320+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-09-10T22:59:34.744+05:30  INFO 9356 --- [16-BankMVC-App] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-09-10T22:59:34.751+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-107] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:59:34.752+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-107] com.zaxxer.hikari.HikariDataSource       : HikariPool-27 - Shutdown initiated...
+2024-09-10T22:59:34.757+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-107] com.zaxxer.hikari.HikariDataSource       : HikariPool-27 - Shutdown completed.
+2024-09-10T22:59:34.887+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T22:59:34.887+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T22:59:35.094+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T22:59:35.131+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36 ms. Found 5 JPA repository interfaces.
+2024-09-10T22:59:35.187+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T22:59:35.187+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T22:59:35.187+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T22:59:35.213+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T22:59:35.213+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 324 ms
+2024-09-10T22:59:35.236+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T22:59:35.237+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T22:59:35.242+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T22:59:35.243+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-28 - Starting...
+2024-09-10T22:59:35.258+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-28 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4309a4c7
+2024-09-10T22:59:35.258+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-28 - Start completed.
+2024-09-10T22:59:35.336+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T22:59:35.381+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T22:59:35.476+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T22:59:35.525+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T22:59:35.610+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T22:59:35.616+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T22:59:35.618+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 0.747 seconds (process running for 1457.749)
+2024-09-10T22:59:35.619+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-09-10T23:02:13.581+05:30  INFO 9356 --- [16-BankMVC-App] [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-09-10T23:02:13.582+05:30  INFO 9356 --- [16-BankMVC-App] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-09-10T23:02:13.583+05:30  INFO 9356 --- [16-BankMVC-App] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-09-10T23:04:09.695+05:30  WARN 9356 --- [16-BankMVC-App] [http-nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unrecognized token 'CREDIT': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')]
+2024-09-10T23:05:22.629+05:30  INFO 9356 --- [16-BankMVC-App] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 3 class path changes (0 additions, 0 deletions, 3 modifications)
+2024-09-10T23:05:22.637+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-111] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T23:05:22.637+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-111] com.zaxxer.hikari.HikariDataSource       : HikariPool-28 - Shutdown initiated...
+2024-09-10T23:05:22.642+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-111] com.zaxxer.hikari.HikariDataSource       : HikariPool-28 - Shutdown completed.
+2024-09-10T23:05:22.787+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T23:05:22.788+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T23:05:23.000+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T23:05:23.051+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 50 ms. Found 5 JPA repository interfaces.
+2024-09-10T23:05:23.115+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T23:05:23.116+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T23:05:23.116+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T23:05:23.143+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T23:05:23.143+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 353 ms
+2024-09-10T23:05:23.173+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T23:05:23.176+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T23:05:23.183+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T23:05:23.184+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-29 - Starting...
+2024-09-10T23:05:23.202+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-29 - Added connection com.mysql.cj.jdbc.ConnectionImpl@191076c0
+2024-09-10T23:05:23.202+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-29 - Start completed.
+2024-09-10T23:05:23.289+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T23:05:23.332+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T23:05:23.434+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T23:05:23.487+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T23:05:23.583+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T23:05:23.592+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T23:05:23.594+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 0.829 seconds (process running for 1805.724)
+2024-09-10T23:05:23.595+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-09-10T23:05:31.208+05:30  INFO 9356 --- [16-BankMVC-App] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-09-10T23:05:31.217+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-115] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T23:05:31.217+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-115] com.zaxxer.hikari.HikariDataSource       : HikariPool-29 - Shutdown initiated...
+2024-09-10T23:05:31.224+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-115] com.zaxxer.hikari.HikariDataSource       : HikariPool-29 - Shutdown completed.
+2024-09-10T23:05:31.360+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T23:05:31.360+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T23:05:31.557+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T23:05:31.603+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 46 ms. Found 5 JPA repository interfaces.
+2024-09-10T23:05:31.657+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T23:05:31.658+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T23:05:31.658+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T23:05:31.685+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T23:05:31.685+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 324 ms
+2024-09-10T23:05:31.714+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T23:05:31.715+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T23:05:31.720+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T23:05:31.721+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-30 - Starting...
+2024-09-10T23:05:31.735+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-30 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3a0d3770
+2024-09-10T23:05:31.735+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-30 - Start completed.
+2024-09-10T23:05:31.829+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T23:05:31.868+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T23:05:31.964+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T23:05:32.008+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T23:05:32.101+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T23:05:32.109+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T23:05:32.110+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 0.768 seconds (process running for 1814.242)
+2024-09-10T23:05:32.111+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-09-10T23:05:43.802+05:30  INFO 9356 --- [16-BankMVC-App] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-09-10T23:05:43.811+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-119] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T23:05:43.811+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-119] com.zaxxer.hikari.HikariDataSource       : HikariPool-30 - Shutdown initiated...
+2024-09-10T23:05:43.815+05:30  INFO 9356 --- [16-BankMVC-App] [Thread-119] com.zaxxer.hikari.HikariDataSource       : HikariPool-30 - Shutdown completed.
+2024-09-10T23:05:43.955+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Starting Application using Java 21.0.3 with PID 9356 (D:\SpringAssignments\16-BankMVC-App\target\classes started by Lawrence.Rodriques in D:\SpringAssignments\16-BankMVC-App)
+2024-09-10T23:05:43.955+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : No active profile set, falling back to 1 default profile: "default"
+2024-09-10T23:05:44.136+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-10T23:05:44.169+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 32 ms. Found 5 JPA repository interfaces.
+2024-09-10T23:05:44.228+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-10T23:05:44.229+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-10T23:05:44.229+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-10T23:05:44.251+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-10T23:05:44.251+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 292 ms
+2024-09-10T23:05:44.270+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-10T23:05:44.272+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-10T23:05:44.277+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-10T23:05:44.278+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-31 - Starting...
+2024-09-10T23:05:44.290+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-31 - Added connection com.mysql.cj.jdbc.ConnectionImpl@60c7ebaa
+2024-09-10T23:05:44.290+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-31 - Start completed.
+2024-09-10T23:05:44.358+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-10T23:05:44.403+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-10T23:05:44.502+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetialsService
+2024-09-10T23:05:44.547+05:30  WARN 9356 --- [16-BankMVC-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-10T23:05:44.631+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-10T23:05:44.647+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-10T23:05:44.649+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] com.aurionpro.bankapp.Application        : Started Application in 0.719 seconds (process running for 1826.78)
+2024-09-10T23:05:44.650+05:30  INFO 9356 --- [16-BankMVC-App] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-09-10T23:05:55.134+05:30  INFO 9356 --- [16-BankMVC-App] [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-09-10T23:05:55.134+05:30  INFO 9356 --- [16-BankMVC-App] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-09-10T23:05:55.135+05:30  INFO 9356 --- [16-BankMVC-App] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
