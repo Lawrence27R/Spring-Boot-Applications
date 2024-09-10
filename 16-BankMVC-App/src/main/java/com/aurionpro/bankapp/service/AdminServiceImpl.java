@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.aurionpro.bankapp.controllers.DocumentDto;
@@ -18,7 +19,9 @@ import com.aurionpro.bankapp.dto.CustomerDto;
 import com.aurionpro.bankapp.dto.PageResponseDto;
 import com.aurionpro.bankapp.entity.CustomerAccount;
 import com.aurionpro.bankapp.entity.Document;
+import com.aurionpro.bankapp.entity.KycStatus;
 import com.aurionpro.bankapp.entity.User;
+import com.aurionpro.bankapp.exception.UserApiException;
 import com.aurionpro.bankapp.repository.CustomerAccountRepository;
 import com.aurionpro.bankapp.repository.DocumentRepository;
 import com.aurionpro.bankapp.repository.UserRepository;
@@ -209,6 +212,19 @@ public class AdminServiceImpl implements AdminService {
                     return dto;
                 })
                 .collect(Collectors.toList());
+    }
+    
+    @Override
+    public User updateCustomerKyc(int customerId, KycStatus kycStatus) {
+        // Fetch the user by customerId
+        User user = customerRepository.findById(customerId)
+            .orElseThrow(() -> new UserApiException(HttpStatus.NOT_FOUND, "User not found"));
+
+        // Update the KYC status
+        user.setKycStatus(kycStatus);
+
+        // Save the updated user entity
+        return customerRepository.save(user);
     }
 
 }

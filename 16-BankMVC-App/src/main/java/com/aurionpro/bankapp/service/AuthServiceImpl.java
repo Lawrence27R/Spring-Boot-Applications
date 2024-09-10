@@ -13,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.aurionpro.bankapp.dto.CustomerRegistrationDto;
 import com.aurionpro.bankapp.dto.LoginDto;
 import com.aurionpro.bankapp.dto.RegistrationDto;
 import com.aurionpro.bankapp.entity.Role;
@@ -46,7 +47,7 @@ public class AuthServiceImpl implements AuthService{
     private EmailSenderService emailSenderService;
 
     @Override
-    public User register(RegistrationDto registrationDto) {
+    public User adminRegister(RegistrationDto registrationDto) {
         if (userRepo.existsByEmailId(registrationDto.getEmailId()))
             throw new UserApiException(HttpStatus.BAD_REQUEST, "User already exists");
 
@@ -69,6 +70,35 @@ public class AuthServiceImpl implements AuthService{
 
         return registeredUser;
     }
+    
+    @Override
+    public User customerRegister(CustomerRegistrationDto customerRegistrationDto) {
+        if (userRepo.existsByEmailId(customerRegistrationDto.getEmailId()))
+            throw new UserApiException(HttpStatus.BAD_REQUEST, "User already exists");
+
+        User user = new User();
+        user.setFirstname(customerRegistrationDto.getFirstname());
+        user.setLastname(customerRegistrationDto.getLastname());
+        user.setEmailId(customerRegistrationDto.getEmailId());
+
+ 
+        user.setKycStatus(com.aurionpro.bankapp.entity.KycStatus.valueOf(customerRegistrationDto.getKycStatus().name()));
+
+        user.setPassword(passwordEncoder.encode(customerRegistrationDto.getPassword()));
+
+        List<Role> roles = new ArrayList<>();
+        Role userRole = roleRepo.findByRolename(customerRegistrationDto.getRolename())
+                                .orElseThrow(() -> new RuntimeException("Role not found"));
+        roles.add(userRole);
+        user.setRole(roles);
+
+        User registeredUser = userRepo.save(user);
+
+        sendRegistrationEmail(registeredUser);
+
+        return registeredUser;
+    }
+
 
     @Override
     public String login(LoginDto loginDto) {

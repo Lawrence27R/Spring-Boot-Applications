@@ -9,6 +9,7 @@ import com.aurionpro.bankapp.dto.CustomerAccountInfoDto;
 import com.aurionpro.bankapp.dto.CustomerDto;
 import com.aurionpro.bankapp.dto.PageResponseDto;
 import com.aurionpro.bankapp.entity.CustomerAccount;
+import com.aurionpro.bankapp.entity.KycStatus;
 import com.aurionpro.bankapp.entity.User;
 
 public interface AdminService {
@@ -26,4 +27,6 @@ public interface AdminService {
 	public PageResponseDto<AdminGetCustomerDto> getFilteredCustomers(CustomerDto customerDto, int pageNumber, int pageSize);
 
 	List<DocumentDto> getDocumentsByCustomerId(int customerId);
+	
+	User updateCustomerKyc(int customerId, KycStatus kycStatus);
 }

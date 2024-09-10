@@ -43,8 +43,8 @@ public class LoginController {
     private static final long CAPTCHA_EXPIRY_TIME = 5 * 60 * 1000; // 5 minutes
 
     @PostMapping("/register")
-    public ResponseEntity<User> register(@RequestBody RegistrationDto registrationDto) {
-        return ResponseEntity.ok(authService.register(registrationDto));
+    public ResponseEntity<User> adminRegister(@RequestBody RegistrationDto registrationDto) {
+        return ResponseEntity.ok(authService.adminRegister(registrationDto));
     }
 
     @PostMapping("/login")
