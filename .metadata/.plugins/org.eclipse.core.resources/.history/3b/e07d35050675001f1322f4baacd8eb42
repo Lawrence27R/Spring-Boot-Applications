@@ -1,0 +1,130 @@
+package com.aurionpro.bankapp.controllers;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.aurionpro.bankapp.dto.PageResponseDto;
+import com.aurionpro.bankapp.dto.TransactionDto;
+import com.aurionpro.bankapp.dto.TransactionFilterDto;
+import com.aurionpro.bankapp.entity.CustomerAccount;
+import com.aurionpro.bankapp.entity.KycStatus;
+import com.aurionpro.bankapp.entity.User;
+import com.aurionpro.bankapp.security.JwtTokenProvider;
+import com.aurionpro.bankapp.service.CustomerService;
+import com.aurionpro.bankapp.service.TransactionService;
+
+import io.jsonwebtoken.io.IOException;
+import jakarta.mail.MessagingException;
+
+@RestController
+@RequestMapping("/bankApp")
+public class VIewCustomerPassbookController {
+
+	@Autowired
+	private TransactionService transactionService;
+
+	@Autowired
+	private CustomerService customerService;
+
+	@Autowired
+	private JwtTokenProvider jwtTokenProvider;
+
+	@PreAuthorize("hasRole('CUSTOMER')")
+	@GetMapping("/viewPassbook")
+	public ResponseEntity<PageResponseDto<TransactionDto>> viewPassbook(@RequestBody TransactionFilterDto filterDto,
+			@RequestParam int pageNumber, @RequestParam int pageSize, @RequestHeader("Authorization") String token) {
+
+		String extractedToken = token.replace("Bearer ", "");
+		String tokenUsername = jwtTokenProvider.getUsername(extractedToken);
+
+		Optional<User> customer = customerService.findEmailId(tokenUsername);
+		if (!customer.isPresent()) {
+			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+		}
+
+		boolean hasAccount = customer.get().getAccounts().stream()
+				.anyMatch(account -> account.getAccountNumber().equals(filterDto.getCustomerAccountNum()));
+
+		if (!hasAccount) {
+			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+		}
+
+		PageResponseDto<TransactionDto> transactions = transactionService.getCustomerTransactions(filterDto, pageNumber,
+				pageSize);
+
+		return new ResponseEntity<>(transactions, HttpStatus.OK);
+	}
+
+	@PreAuthorize("hasRole('CUSTOMER')")
+	@GetMapping("/kycstatus")
+	public ResponseEntity<KycStatus> getKycStatus(@RequestHeader("Authorization") String token) {
+
+		String extractedToken = token.replace("Bearer ", "");
+
+		String tokenUsername = jwtTokenProvider.getUsername(extractedToken);
+
+		Optional<User> customer = customerService.findEmailId(tokenUsername);
+		if (!customer.isPresent()) {
+			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+		}
+
+		KycStatus kycStatus = customerService.getKycStatus(tokenUsername);
+		return ResponseEntity.ok(kycStatus);
+	}
+
+	@PreAuthorize("hasRole('CUSTOMER')")
+	@GetMapping("/sendMonthlyPassbook")
+	public ResponseEntity<String> sendMonthlyPassbook(@RequestHeader("Authorization") String token) {
+
+	    // Extract the token and get the username
+	    String extractedToken = token.replace("Bearer ", "");
+	    String tokenUsername = jwtTokenProvider.getUsername(extractedToken);
+
+	    // Find the customer by email
+	    Optional<User> customer = customerService.findEmailId(tokenUsername);
+	    if (!customer.isPresent()) {
+	        return new ResponseEntity<>("Unauthorized", HttpStatus.UNAUTHORIZED);
+	    }
+
+	    // Fetch the first account number from the user's account list
+	    List<CustomerAccount> accounts = customer.get().getAccounts();
+	    if (accounts.isEmpty()) {
+	        return new ResponseEntity<>("No accounts found for the customer", HttpStatus.BAD_REQUEST);
+	    }
+
+	    // Select the first account (or modify logic to select a specific account)
+	    Long accountNumber = accounts.get(0).getAccountNumber();
+
+	    try {
+	        String customerEmail = customer.get().getEmailId();
+	        
+	        // Fetch transactions for the past month
+	        List<Transaction> transactions = transactionService.getMonthlyTransactions(accountNumber);
+
+	        // If no transactions, return an appropriate message
+	        if (transactions.isEmpty()) {
+	            return new ResponseEntity<>("No transactions found for the past month", HttpStatus.OK);
+	        }
+
+	        // Send passbook email
+	        transactionService.sendMonthlyPassbook(customerEmail, accountNumber);
+	        return new ResponseEntity<>("Monthly passbook sent successfully to " + customerEmail, HttpStatus.OK);
+	        
+	    } catch (MessagingException | IOException e) {
+	        return new ResponseEntity<>("Error sending passbook: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
+	}
+
+
+}

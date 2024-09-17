@@ -1,8 +1,15 @@
 package com.aurionpro.bankapp.service;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,75 +22,144 @@ import com.aurionpro.bankapp.dto.TransactionFilterDto;
 import com.aurionpro.bankapp.entity.Transaction;
 import com.aurionpro.bankapp.repository.TransactionRepository;
 
+import io.jsonwebtoken.io.IOException;
+import jakarta.mail.MessagingException;
+
 @Service
 public class TransactionServiceImpl implements TransactionService {
 
-    @Autowired
-    private TransactionRepository transactionRepository;
+	private static final Logger logger = LoggerFactory.getLogger(TransactionServiceImpl.class);
 
-    @Override
-    public PageResponseDto<TransactionDto> getCustomerTransactions(TransactionFilterDto filterDto, int pageNumber, int pageSize) {
-        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+	@Autowired
+	private TransactionRepository transactionRepository;
 
-        if (filterDto == null) {
-            filterDto = new TransactionFilterDto();
-        }
+	@Autowired
+	private EmailSenderService emailSenderService;
 
-        Page<Transaction> transactions;
-        if (filterDto.getCustomerAccountNum() != null) {
-            transactions = transactionRepository.findByAccount_AccountNumber(filterDto.getCustomerAccountNum(), pageable);
-        } else {
-            transactions = transactionRepository.findAll(pageable);
-        }
-        return filterAndConvertToDto(transactions, filterDto);
-    }
+//	@Autowired
+//	private CustomerAccountRepository customerAccountRepository;
 
-    @Override
-    public PageResponseDto<TransactionDto> getAllTransactions(TransactionFilterDto filterDto, int pageNumber, int pageSize) {
-        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+	@Override
+	public PageResponseDto<TransactionDto> getCustomerTransactions(TransactionFilterDto filterDto, int pageNumber,
+			int pageSize) {
+		Pageable pageable = PageRequest.of(pageNumber, pageSize);
 
-        if (filterDto == null) {
-            filterDto = new TransactionFilterDto();
-        }
+		if (filterDto == null) {
+			filterDto = new TransactionFilterDto();
+		}
 
-        Page<Transaction> transactions = transactionRepository.findAll(pageable);
-        return filterAndConvertToDto(transactions, filterDto);
-    }
+		Page<Transaction> transactions;
+		if (filterDto.getCustomerAccountNum() != null) {
+			transactions = transactionRepository.findByAccount_AccountNumber(filterDto.getCustomerAccountNum(),
+					pageable);
+		} else {
+			transactions = transactionRepository.findAll(pageable);
+		}
+		return filterAndConvertToDto(transactions, filterDto);
+	}
 
-    private PageResponseDto<TransactionDto> filterAndConvertToDto(Page<Transaction> transactions, TransactionFilterDto filterDto) {
-        List<TransactionDto> filteredTransactions = transactions.stream()
-            .filter(transaction -> {
-                boolean matches = true;
+	@Override
+	public PageResponseDto<TransactionDto> getAllTransactions(TransactionFilterDto filterDto, int pageNumber,
+			int pageSize) {
+		Pageable pageable = PageRequest.of(pageNumber, pageSize);
 
-                if (filterDto.getStartDate() != null && transaction.getDate().before(filterDto.getStartDate())) {
-                    matches = false;
-                }
+		if (filterDto == null) {
+			filterDto = new TransactionFilterDto();
+		}
 
-                if (filterDto.getEndDate() != null && transaction.getDate().after(filterDto.getEndDate())) {
-                    matches = false;
-                }
+		Page<Transaction> transactions = transactionRepository.findAll(pageable);
+		return filterAndConvertToDto(transactions, filterDto);
+	}
 
-                if (filterDto.getTypeOfTrans() != null && !transaction.getTypeOfTransaction().toString().equals(filterDto.getTypeOfTrans())) {
-                    matches = false;
-                }
+	private PageResponseDto<TransactionDto> filterAndConvertToDto(Page<Transaction> transactions,
+			TransactionFilterDto filterDto) {
+		List<TransactionDto> filteredTransactions = transactions.stream().filter(transaction -> {
+			boolean matches = true;
 
-                return matches;
-            })
-            .map(this::convertToDto)
-            .collect(Collectors.toList());
+			if (filterDto.getStartDate() != null && transaction.getDate().before(filterDto.getStartDate())) {
+				matches = false;
+			}
 
-        return new PageResponseDto<>(transactions.getTotalElements(), transactions.getTotalPages(), transactions.getSize(), filteredTransactions,
-                transactions.isLast());
-    }
+			if (filterDto.getEndDate() != null && transaction.getDate().after(filterDto.getEndDate())) {
+				matches = false;
+			}
 
-    private TransactionDto convertToDto(Transaction transaction) {
-        return new TransactionDto(
-            transaction.getTransactionId(),
-            transaction.getSenderAccount(),
-            transaction.getReceiverAccount(),
-            transaction.getTypeOfTransaction(),
-            transaction.getAmount(),
-            transaction.getDate()
-        );
-    }
+			if (filterDto.getTypeOfTrans() != null
+					&& !transaction.getTypeOfTransaction().toString().equals(filterDto.getTypeOfTrans())) {
+				matches = false;
+			}
+
+			return matches;
+		}).map(this::convertToDto).collect(Collectors.toList());
+
+		return new PageResponseDto<>(transactions.getTotalElements(), transactions.getTotalPages(),
+				transactions.getSize(), filteredTransactions, transactions.isLast());
+	}
+
+	private TransactionDto convertToDto(Transaction transaction) {
+		return new TransactionDto(transaction.getTransactionId(), transaction.getSenderAccount(),
+				transaction.getReceiverAccount(), transaction.getTypeOfTransaction(), transaction.getAmount(),
+				transaction.getDate());
+	}
+
+	@Override
+	public void sendMonthlyPassbook(String email, Long accountNumber) throws MessagingException, IOException {
+		LocalDate currentDate = LocalDate.now();
+		LocalDate oneMonthAgo = currentDate.minusMonths(1);
+		Date startDate = Date.from(oneMonthAgo.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		Date endDate = Date.from(currentDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+
+		List<Transaction> transactions = transactionRepository.findByAccount_AccountNumberAndDateBetween(accountNumber,
+				startDate, endDate);
+
+		if (transactions.isEmpty()) {
+			throw new MessagingException("No transactions found for the past month");
+		}
+
+		String filePath;
+		try {
+			filePath = generatePassbookFile(transactions);
+			String subject = "Monthly Passbook for Account " + accountNumber;
+			emailSenderService.sendEmailWithAttachment(email, subject, "Please find your monthly passbook attached.",
+					filePath);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (java.io.IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	private String generatePassbookFile(List<Transaction> transactions) throws IOException, java.io.IOException {
+		String fileName = "passbook_" + System.currentTimeMillis() + ".csv";
+		File passbookFile = new File(fileName);
+		FileWriter writer = new FileWriter(passbookFile);
+
+		writer.write("Transaction ID,Date,Sender Account,Receiver Account,Transaction Type,Amount\n");
+
+		for (Transaction transaction : transactions) {
+			writer.write(transaction.getTransactionId() + "," + transaction.getDate() + ","
+					+ transaction.getSenderAccount() + "," + transaction.getReceiverAccount() + ","
+					+ transaction.getTypeOfTransaction() + "," + transaction.getAmount() + "\n");
+		}
+
+		writer.close();
+		return passbookFile.getAbsolutePath();
+	}
+
+	@Override
+	public List<Transaction> getMonthlyTransactions(Long accountNumber) {
+		LocalDate currentDate = LocalDate.now();
+		LocalDate oneMonthAgo = currentDate.minusMonths(1);
+		Date startDate = Date.from(oneMonthAgo.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		Date endDate = Date.from(currentDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+
+		List<Transaction> transactions = transactionRepository.findByAccount_AccountNumberAndDateBetween(accountNumber,
+				startDate, endDate);
+		logger.info("Retrieved {} transactions for account number {} for the past month", transactions.size(),
+				accountNumber);
+		return transactions;
+	}
 }

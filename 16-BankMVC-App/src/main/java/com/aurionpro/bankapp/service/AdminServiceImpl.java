@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -31,54 +33,44 @@ import jakarta.mail.MessagingException;
 @Service
 public class AdminServiceImpl implements AdminService {
 
-	@Autowired
-	private UserRepository customerRepository;
+    private static final Logger logger = LoggerFactory.getLogger(AdminServiceImpl.class);
 
-	@Autowired
-	private CustomerAccountRepository customerAccountRepository;
-	
+    @Autowired
+    private UserRepository customerRepository;
+
+    @Autowired
+    private CustomerAccountRepository customerAccountRepository;
+    
     @Autowired
     private EmailSenderService emailSenderService; 
     
     @Autowired
     private DocumentRepository documentRepository; 
 
-//    @Override
-//    public boolean addCustomer(RegistrationDto registrationDto) {
-//    	User customer = CustomerMapper.toEntity(registrationDto);
-//        
-//        if (customerRepository.findByEmailId(customer.getEmailId()).isPresent()) {
-//            return false;
-//        }
-//        
-//        customerRepository.save(customer);
-//        return true;
-//    }
-
-	@Override
-	public Optional<User> findCustomerById(int customerId) {
-		return customerRepository.findByUserId(customerId);
-	}
+    @Override
+    public Optional<User> findCustomerById(int customerId) {
+        logger.debug("Finding customer by ID: {}", customerId);
+        return customerRepository.findByUserId(customerId);
+    }
 
     @Override
     public CustomerAccount createAccountForCustomer(User customer) {
-        CustomerAccount account = new CustomerAccount();
+        logger.debug("Creating account for customer with ID: {}", customer.getUserId());
 
+        CustomerAccount account = new CustomerAccount();
         long accountNumber;
         do {
             accountNumber = generateRandomAccountNumber();
         } while (customerAccountRepository.existsByAccountNumber(accountNumber));
         account.setAccountNumber(accountNumber);
-
         account.setCustomerBalance(5000);
         account.setUser(customer);
 
-        // Save the account to the repository
         CustomerAccount createdAccount = customerAccountRepository.save(account);
 
-        // Send email to the customer after account creation
-        sendAccountCreationEmail(customer, createdAccount);
+        logger.info("Account created successfully for customer ID: {} with account number: {}", customer.getUserId(), accountNumber);
 
+        sendAccountCreationEmail(customer, createdAccount);
         return createdAccount;
     }
 
@@ -91,7 +83,7 @@ public class AdminServiceImpl implements AdminService {
     private void sendAccountCreationEmail(User customer, CustomerAccount account) {
         String subject = "Your Bank Account Has Been Created!";
         String body = String.format("Dear %s %s, your bank account has been successfully created. "
-                + "Your account number is %d, and your initial balance is %.2f.You can now logging and use service. Thank you for banking with us.",
+                + "Your account number is %d, and your initial balance is %.2f. You can now log in and use the service. Thank you for banking with us.",
                 customer.getFirstname(),
                 customer.getLastname(),
                 account.getAccountNumber(),
@@ -99,106 +91,111 @@ public class AdminServiceImpl implements AdminService {
 
         try {
             emailSenderService.sendEmail(customer.getEmailId(), body, subject, null);
+            logger.info("Account creation email sent to {}", customer.getEmailId());
         } catch (MessagingException e) {
-            System.err.println("Failed to send account creation email: " + e.getMessage());
+            logger.error("Failed to send account creation email: {}", e.getMessage());
         }
     }
 
-	@Override
-	public PageResponseDto<CustomerAccountInfoDto> getAllCustomerAccounts(String firstname, String lastname,
-			Long accountNumber, int pageNumber, int pageSize) {
+    @Override
+    public PageResponseDto<CustomerAccountInfoDto> getAllCustomerAccounts(String firstname, String lastname,
+            Long accountNumber, int pageNumber, int pageSize) {
 
-		Pageable pageable = PageRequest.of(pageNumber, pageSize);
-		Page<CustomerAccount> accounts = Page.empty();
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+        Page<CustomerAccount> accounts = Page.empty();
 
-		if (firstname != null && lastname != null) {
-			accounts = customerAccountRepository.findByUserFirstnameIgnoreCaseAndUser_LastnameIgnoreCase(firstname,
-					lastname, pageable);
-		}
-		if (firstname != null && accounts.isEmpty()) {
-			accounts = customerAccountRepository.findByUserFirstnameIgnoreCase(firstname, pageable);
-		}
-		if (lastname != null && accounts.isEmpty()) {
-			accounts = customerAccountRepository.findByUserLastnameIgnoreCase(lastname, pageable);
-		}
-		if (accountNumber != null && accounts.isEmpty()) {
-			accounts = customerAccountRepository.findByAccountNumber(accountNumber, pageable);
-		}
-		if (accounts.isEmpty()) {
-			accounts = customerAccountRepository.findAll(pageable);
-		}
+        if (firstname != null && lastname != null) {
+            accounts = customerAccountRepository.findByUserFirstnameIgnoreCaseAndUser_LastnameIgnoreCase(firstname,
+                    lastname, pageable);
+        }
+        if (firstname != null && accounts.isEmpty()) {
+            accounts = customerAccountRepository.findByUserFirstnameIgnoreCase(firstname, pageable);
+        }
+        if (lastname != null && accounts.isEmpty()) {
+            accounts = customerAccountRepository.findByUserLastnameIgnoreCase(lastname, pageable);
+        }
+        if (accountNumber != null && accounts.isEmpty()) {
+            accounts = customerAccountRepository.findByAccountNumber(accountNumber, pageable);
+        }
+        if (accounts.isEmpty()) {
+            accounts = customerAccountRepository.findAll(pageable);
+        }
 
-		List<CustomerAccountInfoDto> accountDtos = accounts.map(this::convertToDto).getContent();
+        List<CustomerAccountInfoDto> accountDtos = accounts.map(this::convertToDto).getContent();
 
-		return new PageResponseDto<>(accounts.getTotalElements(), accounts.getTotalPages(), accounts.getSize(),
-				accountDtos, accounts.isLast());
-	}
+        logger.debug("Retrieved {} customer accounts", accountDtos.size());
+        return new PageResponseDto<>(accounts.getTotalElements(), accounts.getTotalPages(), accounts.getSize(),
+                accountDtos, accounts.isLast());
+    }
 
-	private CustomerAccountInfoDto convertToDto(CustomerAccount account) {
-		return new CustomerAccountInfoDto(account.getUser().getFirstname(), account.getUser().getLastname(),
-				account.getAccountNumber(), account.getCustomerBalance());
-	}
+    private CustomerAccountInfoDto convertToDto(CustomerAccount account) {
+        return new CustomerAccountInfoDto(account.getUser().getFirstname(), account.getUser().getLastname(),
+                account.getAccountNumber(), account.getCustomerBalance());
+    }
 
-	@Override
-	public PageResponseDto<User> getAllCustomers(int pageNumber, int pageSize) {
-		Pageable pageable = PageRequest.of(pageNumber, pageSize);
-		Page<User> userPage = customerRepository.findAll(pageable);
+    @Override
+    public PageResponseDto<User> getAllCustomers(int pageNumber, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+        Page<User> userPage = customerRepository.findAll(pageable);
 
-		List<User> userList = userPage.getContent();
+        logger.debug("Retrieved {} customers", userPage.getTotalElements());
 
-		return new PageResponseDto<>(userPage.getTotalElements(), userPage.getTotalPages(), userPage.getSize(),
-				userList, userPage.isLast());
-	}
+        return new PageResponseDto<>(userPage.getTotalElements(), userPage.getTotalPages(), userPage.getSize(),
+                userPage.getContent(), userPage.isLast());
+    }
 
-	@Override
-	public PageResponseDto<AdminGetCustomerDto> getFilteredCustomers(CustomerDto customerDto, int pageNumber, int pageSize) {
-	    Pageable pageable = PageRequest.of(pageNumber, pageSize);
-	    Page<User> users = Page.empty();
+    @Override
+    public PageResponseDto<AdminGetCustomerDto> getFilteredCustomers(CustomerDto customerDto, int pageNumber, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+        Page<User> users = Page.empty();
 
-	    if (customerDto != null) {
-	        String firstname = customerDto.getFirstname();
-	        String lastname = customerDto.getLastname();
-	        Integer customerId = customerDto.getCustomerId();
+        if (customerDto != null) {
+            String firstname = customerDto.getFirstname();
+            String lastname = customerDto.getLastname();
+            Integer customerId = customerDto.getCustomerId();
 
-	        if (firstname != null && lastname != null) {
-	            users = customerRepository.findByFirstnameIgnoreCaseAndLastnameIgnoreCase(firstname, lastname, pageable);
-	        } 
-	        if (firstname != null && users.isEmpty()) {
-	            users = customerRepository.findByFirstnameIgnoreCase(firstname, pageable);
-	        } 
-	        if (lastname != null && users.isEmpty()) {
-	            users = customerRepository.findByLastnameIgnoreCase(lastname, pageable);
-	        }
-	        if (customerId != null && users.isEmpty()) {
-	            Optional<User> user = customerRepository.findByUserId(customerId);
-	            if (user.isPresent()) {
-	                users = new PageImpl<>(List.of(user.get()), pageable, 1);
-	            } else {
-	                users = Page.empty();
-	            }
-	        }
-	    }
+            if (firstname != null && lastname != null) {
+                users = customerRepository.findByFirstnameIgnoreCaseAndLastnameIgnoreCase(firstname, lastname, pageable);
+            } 
+            if (firstname != null && users.isEmpty()) {
+                users = customerRepository.findByFirstnameIgnoreCase(firstname, pageable);
+            } 
+            if (lastname != null && users.isEmpty()) {
+                users = customerRepository.findByLastnameIgnoreCase(lastname, pageable);
+            }
+            if (customerId != null && users.isEmpty()) {
+                Optional<User> user = customerRepository.findByUserId(customerId);
+                if (user.isPresent()) {
+                    users = new PageImpl<>(List.of(user.get()), pageable, 1);
+                } else {
+                    users = Page.empty();
+                }
+            }
+        }
 
-	    if (users.isEmpty()) {
-	        users = customerRepository.findAll(pageable);
-	    }
+        if (users.isEmpty()) {
+            users = customerRepository.findAll(pageable);
+        }
 
-	    List<AdminGetCustomerDto> userResponseList = users.getContent().stream()
-	            .map(user -> {
-	                AdminGetCustomerDto dto = new AdminGetCustomerDto();
-	                dto.setUserId(user.getUserId());
-	                dto.setFirstname(user.getFirstname());
-	                dto.setLastname(user.getLastname());
-	                dto.setEmailId(user.getEmailId());
-	                return dto;
-	            })
-	            .collect(Collectors.toList());
+        List<AdminGetCustomerDto> userResponseList = users.getContent().stream()
+                .map(user -> {
+                    AdminGetCustomerDto dto = new AdminGetCustomerDto();
+                    dto.setUserId(user.getUserId());
+                    dto.setFirstname(user.getFirstname());
+                    dto.setLastname(user.getLastname());
+                    dto.setEmailId(user.getEmailId());
+                    return dto;
+                })
+                .collect(Collectors.toList());
 
-	    return new PageResponseDto<>(users.getTotalElements(), users.getTotalPages(), users.getSize(), userResponseList, users.isLast());
-	}
+        logger.debug("Retrieved {} filtered customers", userResponseList.size());
+        return new PageResponseDto<>(users.getTotalElements(), users.getTotalPages(), users.getSize(), userResponseList, users.isLast());
+    }
 
     @Override
     public List<DocumentDto> getDocumentsByCustomerId(int customerId) {
+        logger.debug("Retrieving documents for customer ID: {}", customerId);
+
         User user = customerRepository.findByUserId(customerId)
                 .orElseThrow(() -> new IllegalArgumentException("Customer not found"));
 
@@ -213,9 +210,11 @@ public class AdminServiceImpl implements AdminService {
                 })
                 .collect(Collectors.toList());
     }
-    
+
     @Override
     public User updateCustomerKyc(int customerId, KycStatus kycStatus) {
+        logger.debug("Updating KYC status for customer ID: {} to {}", customerId, kycStatus);
+
         User user = customerRepository.findById(customerId)
             .orElseThrow(() -> new UserApiException(HttpStatus.NOT_FOUND, "User not found"));
         user.setKycStatus(kycStatus);
@@ -237,10 +236,9 @@ public class AdminServiceImpl implements AdminService {
 
         try {
             emailSenderService.sendEmail(user.getEmailId(), body, subject, null);
+            logger.info("KYC update email sent to {}", user.getEmailId());
         } catch (MessagingException e) {
-            System.err.println("Failed to send KYC update email: " + e.getMessage());
+            logger.error("Failed to send KYC update email: {}", e.getMessage());
         }
     }
-
-
 }

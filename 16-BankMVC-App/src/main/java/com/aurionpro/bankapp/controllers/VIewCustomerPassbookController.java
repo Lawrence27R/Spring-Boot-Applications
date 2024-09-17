@@ -1,4 +1,6 @@
 package com.aurionpro.bankapp.controllers;
+
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +17,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.aurionpro.bankapp.dto.PageResponseDto;
 import com.aurionpro.bankapp.dto.TransactionDto;
 import com.aurionpro.bankapp.dto.TransactionFilterDto;
+import com.aurionpro.bankapp.entity.CustomerAccount;
 import com.aurionpro.bankapp.entity.KycStatus;
+import com.aurionpro.bankapp.entity.Transaction;
 import com.aurionpro.bankapp.entity.User;
 import com.aurionpro.bankapp.security.JwtTokenProvider;
 import com.aurionpro.bankapp.service.CustomerService;
 import com.aurionpro.bankapp.service.TransactionService;
+
+import io.jsonwebtoken.io.IOException;
+import jakarta.mail.MessagingException;
 
 @RestController
 @RequestMapping("/bankApp")
@@ -36,51 +43,81 @@ public class VIewCustomerPassbookController {
 
 	@PreAuthorize("hasRole('CUSTOMER')")
 	@GetMapping("/viewPassbook")
-    public ResponseEntity<PageResponseDto<TransactionDto>> viewPassbook(
-            @RequestBody TransactionFilterDto filterDto,
-            @RequestParam int pageNumber,
-            @RequestParam int pageSize,
-            @RequestHeader("Authorization") String token) {
+	public ResponseEntity<PageResponseDto<TransactionDto>> viewPassbook(@RequestBody TransactionFilterDto filterDto,
+			@RequestParam int pageNumber, @RequestParam int pageSize, @RequestHeader("Authorization") String token) {
 
-        String extractedToken = token.replace("Bearer ", "");
-        String tokenUsername = jwtTokenProvider.getUsername(extractedToken);
+		String extractedToken = token.replace("Bearer ", "");
+		String tokenUsername = jwtTokenProvider.getUsername(extractedToken);
 
-        Optional<User> customer = customerService.findEmailId(tokenUsername);
-        if (!customer.isPresent()) {
-            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-        }
+		Optional<User> customer = customerService.findEmailId(tokenUsername);
+		if (!customer.isPresent()) {
+			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+		}
 
-        boolean hasAccount = customer.get().getAccounts().stream()
-            .anyMatch(account -> account.getAccountNumber().equals(filterDto.getCustomerAccountNum()));
+		boolean hasAccount = customer.get().getAccounts().stream()
+				.anyMatch(account -> account.getAccountNumber().equals(filterDto.getCustomerAccountNum()));
 
-        if (!hasAccount) {
-            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-        }
+		if (!hasAccount) {
+			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+		}
 
-        PageResponseDto<TransactionDto> transactions = transactionService.getCustomerTransactions(
-                filterDto,
-                pageNumber,
-                pageSize
-        );
+		PageResponseDto<TransactionDto> transactions = transactionService.getCustomerTransactions(filterDto, pageNumber,
+				pageSize);
 
-        return new ResponseEntity<>(transactions, HttpStatus.OK);
-    }
-	
+		return new ResponseEntity<>(transactions, HttpStatus.OK);
+	}
+
 	@PreAuthorize("hasRole('CUSTOMER')")
 	@GetMapping("/kycstatus")
 	public ResponseEntity<KycStatus> getKycStatus(@RequestHeader("Authorization") String token) {
 
-	    String extractedToken = token.replace("Bearer ", "");
+		String extractedToken = token.replace("Bearer ", "");
 
+		String tokenUsername = jwtTokenProvider.getUsername(extractedToken);
+
+		Optional<User> customer = customerService.findEmailId(tokenUsername);
+		if (!customer.isPresent()) {
+			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+		}
+
+		KycStatus kycStatus = customerService.getKycStatus(tokenUsername);
+		return ResponseEntity.ok(kycStatus);
+	}
+
+	@PreAuthorize("hasRole('CUSTOMER')")
+	@GetMapping("/sendMonthlyPassbook")
+	public ResponseEntity<String> sendMonthlyPassbook(@RequestHeader("Authorization") String token) {
+	    String extractedToken = token.replace("Bearer ", "");
 	    String tokenUsername = jwtTokenProvider.getUsername(extractedToken);
 
 	    Optional<User> customer = customerService.findEmailId(tokenUsername);
 	    if (!customer.isPresent()) {
-	        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+	        return new ResponseEntity<>("Unauthorized", HttpStatus.UNAUTHORIZED);
 	    }
 
-	    KycStatus kycStatus = customerService.getKycStatus(tokenUsername);
-	    return ResponseEntity.ok(kycStatus);
+	    List<CustomerAccount> accounts = customer.get().getAccounts();
+	    if (accounts.isEmpty()) {
+	        return new ResponseEntity<>("No accounts found for the customer", HttpStatus.BAD_REQUEST);
+	    }
+
+	    Long accountNumber = accounts.get(0).getAccountNumber();
+
+	    try {
+	        String customerEmail = customer.get().getEmailId();
+
+	        List<Transaction> transactions = transactionService.getMonthlyTransactions(accountNumber);
+
+	        if (transactions.isEmpty()) {
+	            return new ResponseEntity<>("No transactions found for the past month", HttpStatus.OK);
+	        }
+
+	        transactionService.sendMonthlyPassbook(customerEmail, accountNumber);
+	        return new ResponseEntity<>("Monthly passbook sent successfully to " + customerEmail, HttpStatus.OK);
+
+	    } catch (MessagingException | IOException e) {
+	        return new ResponseEntity<>("Error sending passbook: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
 	}
+
 
 }

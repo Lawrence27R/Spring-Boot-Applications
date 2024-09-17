@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="jakarta.persistence.Entity"/>
     <fullyQualifiedTypeName name="org.hibernate.annotations.Collate"/>
     <fullyQualifiedTypeName name="jakarta.persistence.Column"/>
     <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
@@ -46,8 +45,6 @@
     <fullyQualifiedTypeName name="io.jsonwebtoken.io.IOException"/>
     <fullyQualifiedTypeName name="com.aurionpro.bankapp.repository.DocumentRepository"/>
     <fullyQualifiedTypeName name="com.aurionpro.bankapp.service.CustomerService"/>
-    <fullyQualifiedTypeName name="org.springframework.security.core.Authentication"/>
-    <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="com.cloudinary.utils.ObjectUtils"/>
     <fullyQualifiedTypeName name="lombok.RequiredArgsConstructor"/>
     <fullyQualifiedTypeName name="com.aurionpro.bankapp.entity.Document"/>
@@ -60,4 +57,7 @@
     <fullyQualifiedTypeName name="com.aurionpro.bankapp.service.AdminService"/>
     <fullyQualifiedTypeName name="com.aurionpro.bankapp.dto.KycStatus"/>
     <fullyQualifiedTypeName name="com.aurionpro.bankapp.entity.KycStatus"/>
+    <fullyQualifiedTypeName name="org.springframework.security.core.Authentication"/>
+    <fullyQualifiedTypeName name="io.jsonwebtoken.SignatureAlgorithm"/>
+    <fullyQualifiedTypeName name="java.util.Map"/>
 </qualifiedTypeNameHistroy>

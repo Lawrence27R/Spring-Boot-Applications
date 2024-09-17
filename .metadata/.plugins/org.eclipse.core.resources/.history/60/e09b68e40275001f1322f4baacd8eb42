@@ -1,0 +1,56 @@
+package com.aurionpro.bankapp.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
+
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
+
+package com.aurionpro.bankapp.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
+
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
+
+import java.io.File;
+
+@Service
+public class EmailSenderService {
+
+    @Autowired
+    private JavaMailSender mailSender;
+
+    public void sendEmail(String toEmail, String body, String subject, String attachmentPath) throws MessagingException {
+
+        MimeMessage mimeMessage = mailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
+
+        mimeMessageHelper.setFrom("compengineering2024@gmail.com");
+        mimeMessageHelper.setTo(toEmail);
+        mimeMessageHelper.setSubject(subject);
+        mimeMessageHelper.setText(body);
+
+        // Check if an attachment path is provided, and attach the file if it exists
+        if (attachmentPath != null && !attachmentPath.isEmpty()) {
+            File attachment = new File(attachmentPath);
+            if (attachment.exists()) {
+                FileSystemResource fileResource = new FileSystemResource(attachment);
+                mimeMessageHelper.addAttachment(fileResource.getFilename(), fileResource);
+            } else {
+                System.err.println("Attachment file not found at: " + attachmentPath);
+            }
+        }
+
+        mailSender.send(mimeMessage);
+        System.out.println("Mail sent successfully to " + toEmail);
+    }
+}
+
+

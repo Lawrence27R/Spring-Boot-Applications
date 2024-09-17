@@ -1,0 +1,52 @@
+package com.aurionpro.bankapp.service;
+
+import java.io.File;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
+
+@Service
+public class EmailSenderService {
+
+    @Autowired
+    private JavaMailSender mailSender;
+
+    // Method to send email with optional attachment
+    public void sendEmailWithAttachment(String to, String subject, String body, String attachmentPath) throws MessagingException {
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, true);
+
+        helper.setTo(to);
+        helper.setSubject(subject);
+        helper.setText(body);
+
+        // Attach the file
+        File file = new File(attachmentPath);
+        if (file.exists()) {
+            helper.addAttachment(file.getName(), file);
+        } else {
+            throw new MessagingException("Attachment file not found: " + attachmentPath);
+        }
+
+        mailSender.send(message);
+        System.out.println("Mail sent successfully with attachment.");
+    }
+
+    // Optional: Method to send email without attachment
+    public void sendEmail(String toEmail, String body, String subject) throws MessagingException {
+        MimeMessage mimeMessage = mailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, false);
+
+        mimeMessageHelper.setFrom("compengineering2024@gmail.com");
+        mimeMessageHelper.setTo(toEmail);
+        mimeMessageHelper.setSubject(subject);
+        mimeMessageHelper.setText(body);
+
+        mailSender.send(mimeMessage);
+        System.out.println("Mail sent successfully.");
+    }
+}

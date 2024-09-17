@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -30,6 +32,8 @@ import jakarta.mail.MessagingException;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
+	private static final Logger logger = LoggerFactory.getLogger(CustomerServiceImpl.class);
+
 	@Autowired
 	private UserRepository customerRepository;
 
@@ -54,6 +58,7 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public void deposit(long customerAccountNum, double amount) {
 		if (amount < 0) {
+			logger.error("Deposit amount must be positive: {}", amount);
 			throw new IllegalArgumentException("Deposit amount must be positive");
 		}
 
@@ -62,32 +67,37 @@ public class CustomerServiceImpl implements CustomerService {
 		customerAccountRepository.save(account);
 
 		createTransaction(account, customerAccountNum, customerAccountNum, amount, TypeOfTransaction.CREDIT);
+		logger.info("Deposited {} into account number {}", amount, customerAccountNum);
 	}
 
 	@Override
 	public void withdraw(long customerAccountNum, double amount) {
 		if (amount < 0) {
+			logger.error("Withdrawal amount must be positive: {}", amount);
 			throw new IllegalArgumentException("Withdrawal amount must be positive");
 		}
 
 		CustomerAccount account = getAccount(customerAccountNum);
 		if (account.getCustomerBalance() - amount < 1000) {
+			logger.error("Insufficient balance for withdrawal: {}", account.getCustomerBalance());
 			throw new IllegalArgumentException("Insufficient balance");
 		}
 		account.setCustomerBalance(account.getCustomerBalance() - amount);
 		customerAccountRepository.save(account);
 
 		createTransaction(account, customerAccountNum, customerAccountNum, amount, TypeOfTransaction.DEBIT);
+		logger.info("Withdrew {} from account number {}", amount, customerAccountNum);
 	}
 
 	@Override
 	public void transfer(long fromAccountNum, long toAccountNum, double amount) {
-
 		if (fromAccountNum == toAccountNum) {
+			logger.error("Transfer to the same account is not allowed: {}", fromAccountNum);
 			throw new IllegalArgumentException("Transfer to the same account is not allowed");
 		}
 
 		if (amount < 0) {
+			logger.error("Transfer amount must be positive: {}", amount);
 			throw new IllegalArgumentException("Transfer amount must be positive");
 		}
 
@@ -95,6 +105,7 @@ public class CustomerServiceImpl implements CustomerService {
 		CustomerAccount receiverAccount = getAccount(toAccountNum);
 
 		if (senderAccount.getCustomerBalance() - amount < 1000) {
+			logger.error("Insufficient balance for transfer: {}", senderAccount.getCustomerBalance());
 			throw new IllegalArgumentException("Insufficient balance");
 		}
 
@@ -105,16 +116,20 @@ public class CustomerServiceImpl implements CustomerService {
 		receiverAccount.setCustomerBalance(receiverAccount.getCustomerBalance() + amount);
 		customerAccountRepository.save(receiverAccount);
 		createTransaction(receiverAccount, fromAccountNum, toAccountNum, amount, TypeOfTransaction.CREDIT);
+
+		logger.info("Transferred {} from account number {} to account number {}", amount, fromAccountNum, toAccountNum);
 	}
 
 	@Override
 	public boolean updateCustomerProfile(int customerId, EditCustomerProfileDto request) {
 		if (request == null) {
+			logger.error("Update request is null for customer ID {}", customerId);
 			return false;
 		}
 
 		User existingCustomer = customerRepository.findById(customerId).orElse(null);
 		if (existingCustomer == null) {
+			logger.error("Customer not found for ID {}", customerId);
 			return false;
 		}
 
@@ -140,6 +155,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 		if (isUpdated) {
 			customerRepository.save(existingCustomer);
+			logger.info("Customer profile updated for ID {}", customerId);
 
 			String subject = "Profile Update Successfully.";
 			String body = String.format(
@@ -147,8 +163,10 @@ public class CustomerServiceImpl implements CustomerService {
 					existingCustomer.getFirstname());
 			try {
 				emailSenderService.sendEmail(existingCustomer.getEmailId(), body, subject, null);
+				logger.info("Profile update email sent to {}", existingCustomer.getEmailId());
 			} catch (MessagingException e) {
-				System.err.println("Failed to send profile update email: " + e.getMessage());
+				logger.error("Failed to send profile update email to {}: {}", existingCustomer.getEmailId(),
+						e.getMessage());
 			}
 			return true;
 		}
@@ -163,7 +181,6 @@ public class CustomerServiceImpl implements CustomerService {
 
 	private void createTransaction(CustomerAccount account, long senderAccount, long receiverAccount, double amount,
 			TypeOfTransaction typeOfTransaction) {
-		// Create the transaction and save it
 		Transaction transaction = new Transaction();
 		transaction.setAccount(account);
 		transaction.setSenderAccount(senderAccount);
@@ -173,8 +190,7 @@ public class CustomerServiceImpl implements CustomerService {
 		transaction.setDate(new Date());
 		transactionRepository.save(transaction);
 
-		// Send email notification to the customer
-		String customerEmail = account.getUser().getEmailId(); // Assuming CustomerAccount has a reference to User
+		String customerEmail = account.getUser().getEmailId();
 		String subject = "Transaction Alert";
 		String body = String.format(
 				"Dear %s, an amount of %.2f has been %s to your account %d. Your account balance is %.2f. Thank you for banking with us.",
@@ -184,13 +200,13 @@ public class CustomerServiceImpl implements CustomerService {
 
 		try {
 			emailSenderService.sendEmail(customerEmail, body, subject, null);
+			logger.info("Transaction alert email sent to {}", customerEmail);
 		} catch (MessagingException e) {
-			System.err.println("Failed to send email: " + e.getMessage());
+			logger.error("Failed to send transaction alert email to {}: {}", customerEmail, e.getMessage());
 		}
 
-		// If it's a transfer, send an email to the receiver as well
 		if (typeOfTransaction == TypeOfTransaction.DEBIT && senderAccount != receiverAccount) {
-			CustomerAccount receiverAccountDetails = getAccount(receiverAccount); // Fetch receiver's account details
+			CustomerAccount receiverAccountDetails = getAccount(receiverAccount);
 			String receiverEmail = receiverAccountDetails.getUser().getEmailId();
 			String receiverBody = String.format(
 					"Dear %s, an amount of %.2f has been credited to your account %d from account %d. Your account balance is %.2f. Thank you for banking with us.",
@@ -199,15 +215,22 @@ public class CustomerServiceImpl implements CustomerService {
 
 			try {
 				emailSenderService.sendEmail(receiverEmail, receiverBody, subject, null);
+				logger.info("Transaction alert email sent to receiver {}", receiverEmail);
 			} catch (MessagingException e) {
-				System.err.println("Failed to send email to receiver: " + e.getMessage());
+				logger.error("Failed to send email to receiver {}: {}", receiverEmail, e.getMessage());
 			}
 		}
 	}
 
 	@Override
 	public Optional<User> findEmailId(String emailId) {
-		return customerRepository.findByEmailId(emailId);
+		Optional<User> user = customerRepository.findByEmailId(emailId);
+		if (user.isEmpty()) {
+			logger.error("Customer not found with email {}", emailId);
+		} else {
+			logger.info("Customer found with email {}", emailId);
+		}
+		return user;
 	}
 
 	@Override
@@ -255,5 +278,4 @@ public class CustomerServiceImpl implements CustomerService {
 
 		return user.getKycStatus();
 	}
-
 }

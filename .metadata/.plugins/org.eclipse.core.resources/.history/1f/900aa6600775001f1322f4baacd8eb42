@@ -1,0 +1,58 @@
+package com.aurionpro.bankapp.service;
+
+import java.io.File;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
+
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
+
+@Service
+public class EmailSenderService {
+
+    @Autowired
+    private JavaMailSender mailSender;
+
+    public void sendEmail(String toEmail, String body, String subject, String attachment) throws MessagingException {
+        
+        MimeMessage mimeMessage = mailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
+        
+        mimeMessageHelper.setFrom("compengineering2024@gmail.com");
+        mimeMessageHelper.setTo(toEmail);
+        mimeMessageHelper.setSubject(subject);
+        mimeMessageHelper.setText(body);
+        
+        // Uncomment to send an attachment (optional)
+        // if (attachment != null) {
+        //     FileSystemResource fileSystem = new FileSystemResource(new File(attachment));
+        //     mimeMessageHelper.addAttachment(fileSystem.getFilename(), fileSystem);
+        // }
+
+        mailSender.send(mimeMessage);
+        System.out.println("Mail sent successfully.");
+    }
+    
+    public void sendEmailWithAttachment(String to, String subject, String body, String attachmentPath) throws MessagingException {
+        MimeMessage message = emailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, true);
+
+        helper.setTo(to);
+        helper.setSubject(subject);
+        helper.setText(body);
+
+        // Attach the file
+        File file = new File(attachmentPath);
+        if (file.exists()) {
+            helper.addAttachment(file.getName(), file);
+        } else {
+            throw new MessagingException("Attachment file not found: " + attachmentPath);
+        }
+
+        emailSender.send(message);
+    }
+}
+

@@ -25,5 +25,4 @@ public interface CustomerService {
 	
 	public KycStatus getKycStatus(String email);
 
-
 }

@@ -2592,3 +2592,239 @@ org.eclipse.core.runtime.OperationCanceledException
 	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
 	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
 	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+!SESSION 2024-09-16 13:23:43.242 -----------------------------------------------
+eclipse.buildId=4.24.0.202407191504
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Framework arguments:  -product org.springframework.boot.ide.branding.sts4
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.springframework.boot.ide.branding.sts4
+
+!ENTRY ch.qos.logback.classic 1 0 2024-09-16 13:23:51.980
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2024-09-16 13:23:57.085
+!MESSAGE Logback config file: D:\SpringAssignments\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.6.1.20240411-1122.xml
+
+!ENTRY org.eclipse.ui 2 0 2024-09-16 13:23:57.642
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2024-09-16 13:23:57.642
+!MESSAGE Commands should really have a category: plug-in='org.springframework.tooling.boot.ls', id='spring.initializr.addStarters', categoryId='org.eclipse.lsp4e.commandCategory'
+
+!ENTRY org.eclipse.ui 2 0 2024-09-16 13:23:58.034
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2024-09-16 13:23:58.034
+!MESSAGE Commands should really have a category: plug-in='org.springframework.tooling.boot.ls', id='spring.initializr.addStarters', categoryId='org.eclipse.lsp4e.commandCategory'
+
+!ENTRY org.eclipse.egit.ui 2 0 2024-09-16 13:24:03.086
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\lawrence.rodriques'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-16 13:24:03.656
+!MESSAGE Boot project ADDED: 01-Spring_Intro
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-16 13:24:03.658
+!MESSAGE Starting Boot LS...
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-16 13:24:03.706
+!MESSAGE Started Boot LS process
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-16 13:24:03.710
+!MESSAGE Boot project ADDED: 02-Dependency_Injection_Map
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-16 13:24:03.713
+!MESSAGE Boot project ADDED: 03-DBOperations-App
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-16 13:24:03.716
+!MESSAGE Boot project ADDED: 04-DBOperations-App
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-16 13:24:03.723
+!MESSAGE Boot project ADDED: 05-DBOperations-App
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-16 13:24:03.728
+!MESSAGE Boot project ADDED: 06-DBOperations-App
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-16 13:24:03.730
+!MESSAGE Boot project ADDED: 07-DBOPangination-App
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-16 13:24:03.736
+!MESSAGE Boot project ADDED: 08-DBO-Pagination-App
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-16 13:24:03.740
+!MESSAGE Boot project ADDED: 09-Exception-Handling
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-16 13:24:03.743
+!MESSAGE Boot project ADDED: 10-Validation-App
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2024-09-16 13:24:03.744
+!MESSAGE Command list starting LS: org.springframework.tooling.boot.ls
+START:
+C:\Users\lawrence.rodriques\Downloads\sts-4.24.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.3.v20240426-1530\jre\bin\javaw.exe
+-cp
+C:\Users\lawrence.rodriques\Downloads\sts-4.24.0.RELEASE\plugins\org.springframework.tooling.boot.ls_1.56.0.202407191456\servers\spring-boot-language-server\BOOT-INF\classes;C:\Users\lawrence.rodriques\Downloads\sts-4.24.0.RELEASE\plugins\org.springframework.tooling.boot.ls_1.56.0.202407191456\servers\spring-boot-language-server\BOOT-INF\lib\*
+-Dsts.lsp.client=eclipse
+-Xmx1024m
+-XX:TieredStopAtLevel=1
+-Xlog:jni+resolve=off
+-Dspring.config.location=file:C:\Users\lawrence.rodriques\Downloads\sts-4.24.0.RELEASE\plugins\org.springframework.tooling.boot.ls_1.56.0.202407191456\servers\spring-boot-language-server\BOOT-INF\classes\application.properties
+-XX:ErrorFile=D:/SpringAssignments/.metadata/.plugins/org.springframework.tooling.boot.ls/fatal-error-spring-boot_1726473243741
+org.springframework.ide.vscode.boot.app.BootLanguageServerBootApp
+--languageserver.hover-timeout=225
+END
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-16 13:24:03.747
+!MESSAGE Boot project ADDED: 11-Pagination-Validation-ExceptionHandling
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-16 13:24:03.748
+!MESSAGE DelegatingStreamConnectionProvider - Starting Boot LS
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-16 13:24:03.750
+!MESSAGE Boot project ADDED: 12-Advanced-Mappings-App
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-16 13:24:03.756
+!MESSAGE Boot project ADDED: 13-Pagination-OTO-Relation
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-16 13:24:03.759
+!MESSAGE Boot project ADDED: 14-Advanced-Mappings-OTM-Relation
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-16 13:24:03.765
+!MESSAGE Boot project ADDED: 15-Email-With-Attachment
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-16 13:24:03.777
+!MESSAGE Boot project ADDED: 16-BankMVC-App
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-16 13:24:03.780
+!MESSAGE Boot project ADDED: 17-Cloudinary-File-Upload-App
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-16 13:24:03.790
+!MESSAGE Boot project ADDED: 18-Advance-Mapping
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-16 13:24:03.797
+!MESSAGE Boot project ADDED: 19-JWT-Security-App
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-16 13:24:03.801
+!MESSAGE Boot project ADDED: 20-BatchProcessing
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2024-09-16 13:24:03.926
+!MESSAGE Started org.springframework.tooling.boot.ls LS process 12652
+!SESSION 2024-09-17 20:03:35.821 -----------------------------------------------
+eclipse.buildId=4.24.0.202407191504
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Framework arguments:  -product org.springframework.boot.ide.branding.sts4
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.springframework.boot.ide.branding.sts4
+
+!ENTRY ch.qos.logback.classic 1 0 2024-09-17 20:03:43.960
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2024-09-17 20:03:48.707
+!MESSAGE Logback config file: D:\SpringAssignments\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.6.1.20240411-1122.xml
+
+!ENTRY org.eclipse.ui 2 0 2024-09-17 20:03:49.405
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2024-09-17 20:03:49.405
+!MESSAGE Commands should really have a category: plug-in='org.springframework.tooling.boot.ls', id='spring.initializr.addStarters', categoryId='org.eclipse.lsp4e.commandCategory'
+
+!ENTRY org.eclipse.ui 2 0 2024-09-17 20:03:49.806
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2024-09-17 20:03:49.806
+!MESSAGE Commands should really have a category: plug-in='org.springframework.tooling.boot.ls', id='spring.initializr.addStarters', categoryId='org.eclipse.lsp4e.commandCategory'
+
+!ENTRY org.eclipse.egit.ui 2 0 2024-09-17 20:03:55.194
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\lawrence.rodriques'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-17 20:03:56.057
+!MESSAGE Boot project ADDED: 01-Spring_Intro
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-17 20:03:56.059
+!MESSAGE Starting Boot LS...
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-17 20:03:56.109
+!MESSAGE Started Boot LS process
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2024-09-17 20:03:56.300
+!MESSAGE Command list starting LS: org.springframework.tooling.boot.ls
+START:
+C:\Users\lawrence.rodriques\Downloads\sts-4.24.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.3.v20240426-1530\jre\bin\javaw.exe
+-cp
+C:\Users\lawrence.rodriques\Downloads\sts-4.24.0.RELEASE\plugins\org.springframework.tooling.boot.ls_1.56.0.202407191456\servers\spring-boot-language-server\BOOT-INF\classes;C:\Users\lawrence.rodriques\Downloads\sts-4.24.0.RELEASE\plugins\org.springframework.tooling.boot.ls_1.56.0.202407191456\servers\spring-boot-language-server\BOOT-INF\lib\*
+-Dsts.lsp.client=eclipse
+-Xmx1024m
+-XX:TieredStopAtLevel=1
+-Xlog:jni+resolve=off
+-Dspring.config.location=file:C:\Users\lawrence.rodriques\Downloads\sts-4.24.0.RELEASE\plugins\org.springframework.tooling.boot.ls_1.56.0.202407191456\servers\spring-boot-language-server\BOOT-INF\classes\application.properties
+-XX:ErrorFile=D:/SpringAssignments/.metadata/.plugins/org.springframework.tooling.boot.ls/fatal-error-spring-boot_1726583636295
+org.springframework.ide.vscode.boot.app.BootLanguageServerBootApp
+--languageserver.hover-timeout=225
+END
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-17 20:03:56.309
+!MESSAGE DelegatingStreamConnectionProvider - Starting Boot LS
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-17 20:03:56.329
+!MESSAGE Boot project ADDED: 02-Dependency_Injection_Map
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-17 20:03:56.333
+!MESSAGE Boot project ADDED: 03-DBOperations-App
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-17 20:03:56.336
+!MESSAGE Boot project ADDED: 04-DBOperations-App
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-17 20:03:56.340
+!MESSAGE Boot project ADDED: 05-DBOperations-App
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-17 20:03:56.348
+!MESSAGE Boot project ADDED: 06-DBOperations-App
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-17 20:03:56.358
+!MESSAGE Boot project ADDED: 07-DBOPangination-App
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-17 20:03:56.365
+!MESSAGE Boot project ADDED: 08-DBO-Pagination-App
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-17 20:03:56.369
+!MESSAGE Boot project ADDED: 09-Exception-Handling
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-17 20:03:56.373
+!MESSAGE Boot project ADDED: 10-Validation-App
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-17 20:03:56.376
+!MESSAGE Boot project ADDED: 11-Pagination-Validation-ExceptionHandling
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-17 20:03:56.380
+!MESSAGE Boot project ADDED: 12-Advanced-Mappings-App
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-17 20:03:56.381
+!MESSAGE Boot project ADDED: 13-Pagination-OTO-Relation
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-17 20:03:56.384
+!MESSAGE Boot project ADDED: 14-Advanced-Mappings-OTM-Relation
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-17 20:03:56.386
+!MESSAGE Boot project ADDED: 15-Email-With-Attachment
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-17 20:03:56.389
+!MESSAGE Boot project ADDED: 16-BankMVC-App
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-17 20:03:56.393
+!MESSAGE Boot project ADDED: 17-Cloudinary-File-Upload-App
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-17 20:03:56.396
+!MESSAGE Boot project ADDED: 18-Advance-Mapping
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-17 20:03:56.404
+!MESSAGE Boot project ADDED: 19-JWT-Security-App
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-17 20:03:56.406
+!MESSAGE Boot project ADDED: 20-BatchProcessing
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2024-09-17 20:03:56.519
+!MESSAGE Started org.springframework.tooling.boot.ls LS process 20524

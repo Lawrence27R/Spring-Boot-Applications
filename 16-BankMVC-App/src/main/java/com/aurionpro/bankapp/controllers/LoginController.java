@@ -2,7 +2,6 @@ package com.aurionpro.bankapp.controllers;
 
 import java.util.Date;
 import java.util.Map;
-import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,9 +31,9 @@ public class LoginController {
 
     @Autowired
     private AuthService authService;
-
-    @Autowired
-    private CaptchaGeneratorService captchaGeneratorService;
+//
+//    @Autowired
+//    private CaptchaGeneratorService captchaGeneratorService;
 
     @Value("${captcha.debug:false}")
     private boolean isDebug;

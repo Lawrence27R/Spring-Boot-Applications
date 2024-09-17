@@ -1,5 +1,0 @@
-package com.aurionpro.batch.repository;
-
-public interface EmployeeRepository {
-
-}

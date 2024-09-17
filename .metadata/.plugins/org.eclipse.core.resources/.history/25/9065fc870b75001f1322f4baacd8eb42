@@ -1,0 +1,280 @@
+package com.aurionpro.bankapp.service;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.aurionpro.bankapp.dto.EditCustomerProfileDto;
+import com.aurionpro.bankapp.entity.CustomerAccount;
+import com.aurionpro.bankapp.entity.Document;
+import com.aurionpro.bankapp.entity.KycStatus;
+import com.aurionpro.bankapp.entity.Transaction;
+import com.aurionpro.bankapp.entity.TypeOfTransaction;
+import com.aurionpro.bankapp.entity.User;
+import com.aurionpro.bankapp.repository.CustomerAccountRepository;
+import com.aurionpro.bankapp.repository.DocumentRepository;
+import com.aurionpro.bankapp.repository.TransactionRepository;
+import com.aurionpro.bankapp.repository.UserRepository;
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
+
+import io.jsonwebtoken.io.IOException;
+import jakarta.mail.MessagingException;
+
+@Service
+public class CustomerServiceImpl implements CustomerService {
+
+    private static final Logger logger = LoggerFactory.getLogger(CustomerServiceImpl.class);
+
+    @Autowired
+    private UserRepository customerRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private CustomerAccountRepository customerAccountRepository;
+
+    @Autowired
+    private TransactionRepository transactionRepository;
+
+    @Autowired
+    private EmailSenderService emailSenderService;
+
+    @Autowired
+    private DocumentRepository documentRepository;
+
+    @Autowired
+    private Cloudinary cloudinary;
+
+    @Override
+    public void deposit(long customerAccountNum, double amount) {
+        if (amount < 0) {
+            logger.error("Deposit amount must be positive: {}", amount);
+            throw new IllegalArgumentException("Deposit amount must be positive");
+        }
+
+        CustomerAccount account = getAccount(customerAccountNum);
+        account.setCustomerBalance(account.getCustomerBalance() + amount);
+        customerAccountRepository.save(account);
+
+        createTransaction(account, customerAccountNum, customerAccountNum, amount, TypeOfTransaction.CREDIT);
+        logger.info("Deposited {} into account number {}", amount, customerAccountNum);
+    }
+
+    @Override
+    public void withdraw(long customerAccountNum, double amount) {
+        if (amount < 0) {
+            logger.error("Withdrawal amount must be positive: {}", amount);
+            throw new IllegalArgumentException("Withdrawal amount must be positive");
+        }
+
+        CustomerAccount account = getAccount(customerAccountNum);
+        if (account.getCustomerBalance() - amount < 1000) {
+            logger.error("Insufficient balance for withdrawal: {}", account.getCustomerBalance());
+            throw new IllegalArgumentException("Insufficient balance");
+        }
+        account.setCustomerBalance(account.getCustomerBalance() - amount);
+        customerAccountRepository.save(account);
+
+        createTransaction(account, customerAccountNum, customerAccountNum, amount, TypeOfTransaction.DEBIT);
+        logger.info("Withdrew {} from account number {}", amount, customerAccountNum);
+    }
+
+    @Override
+    public void transfer(long fromAccountNum, long toAccountNum, double amount) {
+        if (fromAccountNum == toAccountNum) {
+            logger.error("Transfer to the same account is not allowed: {}", fromAccountNum);
+            throw new IllegalArgumentException("Transfer to the same account is not allowed");
+        }
+
+        if (amount < 0) {
+            logger.error("Transfer amount must be positive: {}", amount);
+            throw new IllegalArgumentException("Transfer amount must be positive");
+        }
+
+        CustomerAccount senderAccount = getAccount(fromAccountNum);
+        CustomerAccount receiverAccount = getAccount(toAccountNum);
+
+        if (senderAccount.getCustomerBalance() - amount < 1000) {
+            logger.error("Insufficient balance for transfer: {}", senderAccount.getCustomerBalance());
+            throw new IllegalArgumentException("Insufficient balance");
+        }
+
+        senderAccount.setCustomerBalance(senderAccount.getCustomerBalance() - amount);
+        customerAccountRepository.save(senderAccount);
+        createTransaction(senderAccount, fromAccountNum, toAccountNum, amount, TypeOfTransaction.DEBIT);
+
+        receiverAccount.setCustomerBalance(receiverAccount.getCustomerBalance() + amount);
+        customerAccountRepository.save(receiverAccount);
+        createTransaction(receiverAccount, fromAccountNum, toAccountNum, amount, TypeOfTransaction.CREDIT);
+
+        logger.info("Transferred {} from account number {} to account number {}", amount, fromAccountNum, toAccountNum);
+    }
+
+    @Override
+    public boolean updateCustomerProfile(int customerId, EditCustomerProfileDto request) {
+        if (request == null) {
+            logger.error("Update request is null for customer ID {}", customerId);
+            return false;
+        }
+
+        User existingCustomer = customerRepository.findById(customerId).orElse(null);
+        if (existingCustomer == null) {
+            logger.error("Customer not found for ID {}", customerId);
+            return false;
+        }
+
+        boolean isUpdated = false;
+
+        if (request.getFirstname() != null && !request.getFirstname().isEmpty()) {
+            existingCustomer.setFirstname(request.getFirstname());
+            isUpdated = true;
+        }
+        if (request.getLastname() != null && !request.getLastname().isEmpty()) {
+            existingCustomer.setLastname(request.getLastname());
+            isUpdated = true;
+        }
+        if (request.getEmailId() != null && !request.getEmailId().isEmpty()) {
+            existingCustomer.setEmailId(request.getEmailId());
+            isUpdated = true;
+        }
+        if (request.getCustomerPassword() != null && !request.getCustomerPassword().isEmpty()) {
+            String encodedPassword = passwordEncoder.encode(request.getCustomerPassword());
+            existingCustomer.setPassword(encodedPassword);
+            isUpdated = true;
+        }
+
+        if (isUpdated) {
+            customerRepository.save(existingCustomer);
+            logger.info("Customer profile updated for ID {}", customerId);
+
+            String subject = "Profile Update Successfully.";
+            String body = String.format(
+                    "Dear %s, your profile has been updated successfully. If you didn't make these changes, please contact support.",
+                    existingCustomer.getFirstname());
+            try {
+                emailSenderService.sendEmail(existingCustomer.getEmailId(), body, subject, null);
+                logger.info("Profile update email sent to {}", existingCustomer.getEmailId());
+            } catch (MessagingException e) {
+                logger.error("Failed to send profile update email to {}: {}", existingCustomer.getEmailId(), e.getMessage());
+            }
+            return true;
+        }
+
+        return false;
+    }
+
+    private CustomerAccount getAccount(long accountNumber) {
+        return customerAccountRepository.findByAccountNumber(accountNumber)
+                .orElseThrow(() -> new IllegalArgumentException("Account not found"));
+    }
+
+    private void createTransaction(CustomerAccount account, long senderAccount, long receiverAccount, double amount,
+                                   TypeOfTransaction typeOfTransaction) {
+        Transaction transaction = new Transaction();
+        transaction.setAccount(account);
+        transaction.setSenderAccount(senderAccount);
+        transaction.setReceiverAccount(receiverAccount);
+        transaction.setAmount(amount);
+        transaction.setTypeOfTransaction(typeOfTransaction);
+        transaction.setDate(new Date());
+        transactionRepository.save(transaction);
+
+        String customerEmail = account.getUser().getEmailId();
+        String subject = "Transaction Alert";
+        String body = String.format(
+                "Dear %s, an amount of %.2f has been %s to your account %d. Your account balance is %.2f. Thank you for banking with us.",
+                account.getUser().getFirstname(), amount,
+                typeOfTransaction == TypeOfTransaction.CREDIT ? "credited" : "debited", account.getAccountNumber(),
+                account.getCustomerBalance());
+
+        try {
+            emailSenderService.sendEmail(customerEmail, body, subject, null);
+            logger.info("Transaction alert email sent to {}", customerEmail);
+        } catch (MessagingException e) {
+            logger.error("Failed to send transaction alert email to {}: {}", customerEmail, e.getMessage());
+        }
+
+        if (typeOfTransaction == TypeOfTransaction.DEBIT && senderAccount != receiverAccount) {
+            CustomerAccount receiverAccountDetails = getAccount(receiverAccount);
+            String receiverEmail = receiverAccountDetails.getUser().getEmailId();
+            String receiverBody = String.format(
+                    "Dear %s, an amount of %.2f has been credited to your account %d from account %d. Your account balance is %.2f. Thank you for banking with us.",
+                    receiverAccountDetails.getUser().getFirstname(), amount, receiverAccountDetails.getAccountNumber(),
+                    senderAccount, receiverAccountDetails.getCustomerBalance());
+
+            try {
+                emailSenderService.sendEmail(receiverEmail, receiverBody, subject, null);
+                logger.info("Transaction alert email sent to receiver {}", receiverEmail);
+            } catch (MessagingException e) {
+                logger.error("Failed to send email to receiver {}: {}", receiverEmail, e.getMessage());
+            }
+        }
+    }
+
+    @Override
+    public Optional<User> findEmailId(String emailId) {
+        Optional<User> user = customerRepository.findByEmailId(emailId);
+        if (user.isEmpty()) {
+            logger.error("Customer not found with email {}", emailId);
+        } else {
+            logger.info("Customer found with email {}", emailId);
+        }
+        return user;
+    }
+
+	@Override
+	public boolean uploadDocuments(String email, List<MultipartFile> documents) throws IOException {
+		if (documents == null || documents.isEmpty()) {
+			throw new IllegalArgumentException("Cannot upload an empty list of files.");
+		}
+
+		User user = customerRepository.findByEmailId(email)
+				.orElseThrow(() -> new IllegalArgumentException("Customer not found"));
+
+		for (MultipartFile document : documents) {
+			if (document.isEmpty()) {
+				throw new IllegalArgumentException("Cannot upload an empty file.");
+			}
+
+			Map<String, Object> uploadResult;
+			try {
+				uploadResult = cloudinary.uploader().upload(document.getBytes(), ObjectUtils.emptyMap());
+				String documentUrl = (String) uploadResult.get("url");
+				Document uploadedDocument = new Document();
+				uploadedDocument.setName(document.getOriginalFilename());
+				uploadedDocument.setUrl(documentUrl);
+				uploadedDocument.setUser(user);
+
+				documentRepository.save(uploadedDocument);
+				user.getDocuments().add(uploadedDocument);
+			} catch (java.io.IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+
+		customerRepository.save(user);
+
+		return true;
+	}
+
+	@Override
+	public KycStatus getKycStatus(String email) {
+
+		User user = customerRepository.findByEmailId(email)
+				.orElseThrow(() -> new IllegalArgumentException("Customer not found"));
+
+		return user.getKycStatus();
+	}
+}

@@ -3,6 +3,8 @@ package com.aurionpro.bankapp.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -26,30 +28,34 @@ import com.aurionpro.bankapp.security.JwtTokenProvider;
 import jakarta.mail.MessagingException;
 
 @Service
-public class AuthServiceImpl implements AuthService{
+public class AuthServiceImpl implements AuthService {
 
-	@Autowired
-	private AuthenticationManager authenticationManager;
+    private static final Logger logger = LoggerFactory.getLogger(AuthServiceImpl.class);
 
-	@Autowired
-	private UserRepository userRepo;
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+    @Autowired
+    private UserRepository userRepo;
 
-	@Autowired
-	private JwtTokenProvider tokenProvider;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
-	@Autowired
-	private RoleRepository roleRepo;
-	
-	@Autowired
+    @Autowired
+    private JwtTokenProvider tokenProvider;
+
+    @Autowired
+    private RoleRepository roleRepo;
+    
+    @Autowired
     private EmailSenderService emailSenderService;
 
     @Override
     public User adminRegister(RegistrationDto registrationDto) {
-        if (userRepo.existsByEmailId(registrationDto.getEmailId()))
+        if (userRepo.existsByEmailId(registrationDto.getEmailId())) {
+            logger.error("User with email {} already exists", registrationDto.getEmailId());
             throw new UserApiException(HttpStatus.BAD_REQUEST, "User already exists");
+        }
 
         User user = new User();
         user.setFirstname(registrationDto.getFirstname());
@@ -57,14 +63,16 @@ public class AuthServiceImpl implements AuthService{
         user.setEmailId(registrationDto.getEmailId());
         user.setPassword(passwordEncoder.encode(registrationDto.getPassword()));
 
-        List<Role> roles = new ArrayList<Role>();
-
-        Role userRole = roleRepo.findByRolename(registrationDto.getRolename()).get();
+        List<Role> roles = new ArrayList<>();
+        Role userRole = roleRepo.findByRolename(registrationDto.getRolename())
+                                .orElseThrow(() -> new RuntimeException("Role not found"));
 
         roles.add(userRole);
         user.setRole(roles);
 
         User registeredUser = userRepo.save(user);
+
+        logger.info("Admin registered successfully with email {}", registeredUser.getEmailId());
 
         sendRegistrationEmail(registeredUser);
 
@@ -73,15 +81,16 @@ public class AuthServiceImpl implements AuthService{
     
     @Override
     public User customerRegister(CustomerRegistrationDto customerRegistrationDto) {
-        if (userRepo.existsByEmailId(customerRegistrationDto.getEmailId()))
+        if (userRepo.existsByEmailId(customerRegistrationDto.getEmailId())) {
+            logger.error("User with email {} already exists", customerRegistrationDto.getEmailId());
             throw new UserApiException(HttpStatus.BAD_REQUEST, "User already exists");
+        }
 
         User user = new User();
         user.setFirstname(customerRegistrationDto.getFirstname());
         user.setLastname(customerRegistrationDto.getLastname());
         user.setEmailId(customerRegistrationDto.getEmailId());
 
- 
         user.setKycStatus(com.aurionpro.bankapp.entity.KycStatus.valueOf(customerRegistrationDto.getKycStatus().name()));
 
         user.setPassword(passwordEncoder.encode(customerRegistrationDto.getPassword()));
@@ -94,11 +103,12 @@ public class AuthServiceImpl implements AuthService{
 
         User registeredUser = userRepo.save(user);
 
+        logger.info("Customer registered successfully with email {}", registeredUser.getEmailId());
+
         sendRegistrationEmail(registeredUser);
 
         return registeredUser;
     }
-
 
     @Override
     public String login(LoginDto loginDto) {
@@ -108,22 +118,25 @@ public class AuthServiceImpl implements AuthService{
             SecurityContextHolder.getContext().setAuthentication(authentication);
             String token = tokenProvider.generateToken(authentication);
 
+            logger.info("User {} logged in successfully", loginDto.getUsername());
+
             return token;
         } catch (BadCredentialsException e) {
+            logger.error("Invalid login attempt for username {}", loginDto.getUsername());
             throw new UserApiException(HttpStatus.NOT_FOUND, "Invalid login details");
         }
     }
 
-	
     private void sendRegistrationEmail(User user) {
         String subject = "Registration Successful on AurionPro Bank";
-        String body = String.format("Dear %s %s, your registration was successful!.",
+        String body = String.format("Dear %s %s, your registration was successful!",
                 user.getFirstname(), user.getLastname());
 
         try {
             emailSenderService.sendEmail(user.getEmailId(), body, subject, null);
+            logger.info("Registration email sent to {}", user.getEmailId());
         } catch (MessagingException e) {
-            System.err.println("Failed to send registration email: " + e.getMessage());
+            logger.error("Failed to send registration email to {}: {}", user.getEmailId(), e.getMessage());
         }
     }
 }
